@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
+import 'rxjs/add/operator/map';
+
 
 Injectable()
 export class OrderService {
@@ -11,8 +12,9 @@ export class OrderService {
     constructor(private http:HttpClient){}
 
     getOrders(): Observable<any[]>{
+        let uri = environment.ORDERS_URI;
         return this.http
-                   .get(environment.ORDERS_URI)
+                   .get(uri)
                    .map((data:any) => <any[]>data.orders);
     }
 }
