@@ -2,15 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import { environment } from '../../environments/environment';
 
 Injectable()
 export class OrderService {
 
+    //private uri: string ="httpsmnk-angular-express.herokuapp.com";
     constructor(private http:HttpClient){}
 
-    getOrders(): Observable<any>{
+    getOrders(): Observable<any[]>{
         return this.http
-                   .get("https://jsonplaceholder.typicode.com/todos")
-                   .map(data => <any>data);
+                   .get(environment.ORDERS_URI)
+                   .map((data:any) => <any[]>data.orders);
     }
 }

@@ -9,6 +9,7 @@ import { DashobardComponent } from './dashobard/dashobard.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderService } from './services/order.service';
 import { HttpClientModule } from '@angular/common/http';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 const routes: Routes = [
   { path:'', redirectTo:'home', pathMatch:'full'},
@@ -21,7 +22,8 @@ const routes: Routes = [
     AppComponent,
     HeaderNavigationComponent,
     DashobardComponent,
-    OrdersComponent
+    OrdersComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,

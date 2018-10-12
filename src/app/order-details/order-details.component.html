@@ -1,0 +1,154 @@
+<div style="padding-bottom: 5px;" [ngClass]=" order.financial_status === 'pending' ? 'border-yellow': 'border-green' ">
+  <div class="Polaris-Card">
+    <div class="Polaris-Card__Section">
+      <div class="Polaris-Stack Polaris-Stack--vertical">
+        <!--Order Master -->
+        <div class="Polaris-Stack__Item">
+          <div class="row">
+            <div class="col-sm-1">
+              <button type="button" class="Polaris-Button Polaris-Button--plain" (click)="toggle()">
+                <span class="Polaris-Button__Content"><span><b>
+                      {{order.order_number}}</b></span>
+                </span>
+              </button>
+            </div>
+            <div class="col-sm-1">
+              {{order.subtotal_price | currency}}
+            </div>
+            <div class="col-sm-2">
+              {{order.shipping_address.first_name}}
+              {{order.shipping_address.last_name}}
+            </div>
+            <div class="col-sm-1">
+              <span class="Polaris-Badge Polaris-Badge--status{{ order.financial_status === 'pending' ? 'Attention': 'Success'}}"><span
+                  class="Polaris-VisuallyHidden">Attention</span>{{order.financial_status}}</span>
+            </div>
+            <div class="col-sm-2">
+              <span class="Polaris-Badge Polaris-Badge--progress{{order.fulfillment_status === null ? 'Incomplete' : 'Complete' }}"><span
+                  class="Polaris-Badge__Pip">
+                  <span class="Polaris-VisuallyHidden">Success</span></span>
+                {{order.fulfillment_status === null ? 'Unfullfilled' : 'Fulfilled' }}
+              </span>
+            </div>
+            <div class="col-sm-1">
+              <select name="ddlgateway" class="form-control smallFont" [(ngModel)]="gateway">
+                <option value="cash_on_delivery">COD</option>
+                <option value="manual">Paid</option>
+                <option value="cashfree">CF</option>
+              </select>
+            </div>
+            <div class="col-sm-2">
+              <select id="ddlCourier" name="ddlCourier" placeholder="select courier" [(ngModel)]="selectedCourier"
+                class="form-control" aria-invalid="false">
+                <option value="">Select Courier</option>
+                <option value="ecom">Ecom Express</option>
+                <option value="delhivery">Delhivery</option>
+                <option value="aramax">Aramax</option>
+              </select>
+            </div>
+            <div class="col-sm-2">
+              <!-- <app-vendors-dropdown [(selectedVendor)]="selectedVendor"></app-vendors-dropdown> -->
+            </div>
+          </div>
+        </div>
+        <!--Order Details - Line Items, Billing Address, Shipping Address and Customer Info-->
+        <div class="Polaris-Stack__Item details">
+          <div id="basic-collapsible" aria-hidden="false" *ngIf="showDetails" class="Polaris-Collapsible Polaris-Collapsible--open"
+            style="height: auto;">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="Polaris-Card blocks">
+                  <div class="Polaris-Card__Section">
+                    <div class="Polaris-CalloutCard">
+                      <div class="Polaris-CalloutCard__Content">
+                        <div class="Polaris-CalloutCard__Title">
+                          <h2 class="Polaris-Heading">Line Items</h2>
+                        </div>
+                        <div class="Polaris-TextContainer">
+                          <div class="row" *ngFor="let item of order.line_items">
+                            <div class="col-sm-3">
+                              {{item.sku}}
+                            </div>
+                            <div class="col-sm-8">
+                              {{item.name}}
+                            </div>
+                            <div class="col-sm-1">
+                              {{item.quantity}}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <!-- Shipping & Billing Infomration -->
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="Polaris-Card blocks">
+                      <div class="Polaris-Card__Section">
+                        <div class="Polaris-CalloutCard">
+                          <div class="Polaris-CalloutCard__Content">
+                            <div class="Polaris-CalloutCard__Title">
+                              <h2 class="Polaris-Heading">Shipping Address</h2>
+                            </div>
+                            <div class="Polaris-TextContainer">
+                              {{order.shipping_address.address1}} {{order.shipping_address.address2}}
+                              {{order.shipping_address.city}}
+                              {{order.shipping_address.state}}
+                              {{order.shipping_address.zip}}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="Polaris-Card blocks">
+                      <div class="Polaris-Card__Section">
+                        <div class="Polaris-CalloutCard">
+                          <div class="Polaris-CalloutCard__Content">
+                            <div class="Polaris-CalloutCard__Title">
+                              <h2 class="Polaris-Heading">Billing Address</h2>
+                            </div>
+                            <div class="Polaris-TextContainer">
+                              {{order.billing_address.address1}} {{order.billing_address.address2}}
+                              {{order.billing_address.city}}
+                              {{order.billing_address.state}}
+                              {{order.billing_address.zip}}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                  <div class="Polaris-Card blocks">
+                      <div class="Polaris-Card__Section">
+                        <div class="Polaris-CalloutCard">
+                          <div class="Polaris-CalloutCard__Content">
+                            <div class="Polaris-CalloutCard__Title">
+                              <h2 class="Polaris-Heading">Customer Information</h2>
+                            </div>
+                            <div class="Polaris-TextContainer">
+                              <b>{{order.customer.first_name}} {{order.customer.last_name}}</b> <br/>
+                              {{order.customer.email}}<br/>
+                              {{order.phone}}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
