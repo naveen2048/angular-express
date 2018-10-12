@@ -1,1 +1,195 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+
+.subDiv {
+    background-size: cover;
+    background-attachment: fixed;
+    /* text-align: center; */
+    position: relative;
+    color: #222;
+    margin-top: 11rem;
+}
+
+body{
+    line-height: 2.4rem;
+    letter-spacing: 0.085rem;
+    background: #f9fafb;
+}
+.form {
+    background: #fff !important;
+}
+hr {
+    /* border-top: 1px solid #212b5a !important; */
+}
+#top-bar.animated-header {
+    padding: 20px 0 0px 20px;
+    background: #212b5a;
+    -webkit-box-shadow: none;
+    box-shadow: 0 3px 4px 0.08px rgba(0, 0, 0, 0.2);
+    color: #222222;
+}
+.navbar-nav a {
+    color: #ffffff;
+    font-size: 3rem;
+    }
+    .nav>li>a:focus, .nav>li>a:hover{
+        background-color: #fdb706;
+    }
+    .nav>li {
+        position: relative;
+        display: block;
+        margin: 0 3px 0 3px;
+    }
+#top-bar {
+    background: #fff;
+    color: #fff;
+    transition: all 0.2s ease-out 0s;
+    padding: 15px 0;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #dedede;
+}
+#footer {
+    background: #fff;
+    padding: 25px 0;
+    color: #555;
+}
+
+#footer .copyright {
+    font-size: 13px;
+    margin-bottom: 0;
+}
+#footer .social {
+    text-align: right;
+    margin-bottom: 0;
+}
+ul {
+    padding-left: 0;
+}
+#footer .social li {
+    display: inline-block;
+    margin-right: 15px;
+}
+ul li {
+    list-style: none;
+}
+#call-to-action {
+    background: #02bdd5;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+    color: #fff;
+}
+#call-to-action .block {
+    position: relative;
+    z-index: 99;
+    color: #fff;
+}
+#call-to-action .block h2 {
+    margin-bottom: 15px;
+    color: #fff;
+}
+.title {
+    font-size: 30px;
+    line-height: 1.1;
+    font-weight: 300;
+    color: #333;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+#about {
+    padding: 110px 0;
+}
+#about .block {
+    padding: 20px 30px 0 30px;
+}
+.subDiv {
+    background-size: cover;
+    background-attachment: fixed;
+    /* text-align: center; */
+    position: relative;
+    color: #222;
+    margin-top: 11rem;
+}
+.mainBody{
+    background: #F4F4F4; /*#fdb706;*/
+    padding:2rem;
+}
+/* .CategoryBlock:hover {
+    background: #ffffff;
+}
+.CategoryBlock {
+    padding: 5px;
+    background: #cccccc;
+} */
+.searchResult .row {
+    border: 1px solid #bbb;
+    padding: 4rem;
+    background: #ffffff;
+    margin: 1px;
+}
+/* .searchResult {
+    margin-top: 2.5rem;
+} */
+.filterSection {
+    background: #fff;
+    color: #ffffff;
+    padding: 1rem 4rem 0rem 4rem;
+    border-radius: 10px;
+}
+a {
+    color: #222222;
+}
+.margin-l-14{
+    margin-left: 14rem;
+}
+
+.navbar-header button {
+    margin-top: -5px;
+    width: 50px;
+    height: 50px;
+    background: #fdb706;
+    border: 4px solid #ffffff;
+    margin-right: 5rem;
+    color: #212b5a;
+}
+.lblStyle {
+    color: #1abc9c;
+    font-size: 20px;
+    font-weight: 900;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.panel-default>.panel-heading {
+    color: #333;
+    background-color: #ffff;
+}
+.testStyle{
+    color:red;
+}
+/*Start of Tab styles*/
+li.tabs__tab.active.ng-star-inserted {
+    background-color: #212b5a !important;
+}
+li.tabs__tab {
+    padding: 10px !important;
+}
+tab {
+    margin-top: 10px;
+}
+.tabs__panel {
+    background-color: #fff !important;
+}
+
+.details {
+    background:#dfe3e8;
+    font-size: 12px;
+}
+
+.blocks {
+    margin: 5px;
+}
+
