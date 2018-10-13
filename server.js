@@ -76,7 +76,6 @@ app.get("/shopify", (req, res) => {
 
 //redirect url: /shopify/callback
 app.get("/shopify/callback", (req, res) => {
-  const access_token;
   const { shop, hmac, code, state } = req.query;
   const stateCookie = cookie.parse(req.headers.cookie).state;
 
@@ -103,7 +102,7 @@ app.get("/shopify/callback", (req, res) => {
     superagent
         .post(accessTokenRequestUrl, {json : accessTokenPayload})
         .end((err,response) => {
-          access_token = response.access_token;
+          let access_token = response.access_token;
 
           //save to database
           //Save the shope details who are installing the app
@@ -111,7 +110,7 @@ app.get("/shopify/callback", (req, res) => {
           // token: token used to access the shop data, when using the app
           var appUser = {
             shop: shop,
-            token:code,
+            token:access_token,
             installdate: new Date(),
             isactive: true
           };
