@@ -10,6 +10,9 @@ import { OrdersComponent } from './orders/orders.component';
 import { OrderService } from './services/order.service';
 import { HttpClientModule } from '@angular/common/http';
 import { OrderDetailsComponent } from './order-details/order-details.component';
+import { FilterPipe } from './shared/filter';
+import { SpinnerComponent } from './shared/spinner';
+import { VendorsDropdownComponent } from './shared/vendors-dropdown';
 
 const routes: Routes = [
   { path:'', redirectTo:'home', pathMatch:'full'},
@@ -23,7 +26,10 @@ const routes: Routes = [
     HeaderNavigationComponent,
     DashobardComponent,
     OrdersComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    FilterPipe,
+    SpinnerComponent,
+    VendorsDropdownComponent
   ],
   imports: [
     BrowserModule,
