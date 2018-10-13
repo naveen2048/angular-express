@@ -95,45 +95,13 @@ app.get("/shopify/callback", (req, res) => {
     db.appUsers.findOne({ shop: shop }, function(err, user) {
       if (err) {
         //do nothing
-      } else {
-        if ( user &&  (user.shop != "" || user.shop != undefined)) {
+      } 
+      else {
+        if (user && (user.shop != "" || user.shop != undefined)) {
           access_token = user.token;
           res.sendFile(path.join(__dirname + "/dist/index.html"));
         } else {
-          //Get permenant access_token for the store and save to DB for future use
-          const accessTokenRequestUrl =
-            "https://" + shop + "/admin/oauth/access_token";
-
-          const accessTokenPayload = {
-            client_id: apiKey,
-            client_secret: apiSecret,
-            code
-          };
-
-          superagent
-            .post(accessTokenRequestUrl, { json: accessTokenPayload })
-            .end((err, response) => {
-              let access_token = response.access_token;
-
-              //save to database
-              //Save the shope details who are installing the app
-              // Shop: Shop name passed by Shopify
-              // token: token used to access the shop data, when using the app
-              var appUser = {
-                shop: shop,
-                token: access_token,
-                installdate: new Date(),
-                isactive: true
-              };
-
-              db.appUsers.save(appUser, function(err, user) {
-                if (err) {
-                  res.send(err);
-                }
-                //res.json(user);
-                res.sendFile(path.join(__dirname + "/dist/index.html"));
-              });
-            });
+          GetAccessToken(shop);
         }
       }
     });
@@ -143,6 +111,42 @@ app.get("/shopify/callback", (req, res) => {
     res.status(400).send("Required parameters missing");
   }
 });
+
+function GetAccessToken(shop) {
+  //Get permenant access_token for the store and save to DB for future use
+  const accessTokenRequestUrl = "https://" + shop + "/admin/oauth/access_token";
+
+  const accessTokenPayload = {
+    client_id: apiKey,
+    client_secret: apiSecret,
+    code
+  };
+
+  superagent
+    .post(accessTokenRequestUrl, { json: accessTokenPayload })
+    .end((err, response) => {
+      let access_token = response.access_token;
+
+      //save to database
+      //Save the shope details who are installing the app
+      // Shop: Shop name passed by Shopify
+      // token: token used to access the shop data, when using the app
+      var appUser = {
+        shop: shop,
+        token: access_token,
+        installdate: new Date(),
+        isactive: true
+      };
+
+      db.appUsers.save(appUser, function(err, user) {
+        if (err) {
+          res.send(err);
+        }
+        //res.json(user);
+        res.sendFile(path.join(__dirname + "/dist/index.html"));
+      });
+    });
+}
 
 function validateRequest(req, hmac) {
   const map = Object.assign({}, req.query);
