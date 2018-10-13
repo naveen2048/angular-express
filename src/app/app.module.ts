@@ -17,7 +17,8 @@ import { VendorsDropdownComponent } from './shared/vendors-dropdown';
 const routes: Routes = [
   { path:'', redirectTo:'home', pathMatch:'full'},
   { path:'home', component:DashobardComponent},
-  { path:'orders', component:OrdersComponent}
+  { path:'orders', component:OrdersComponent},
+  { path:'**', redirectTo:'home' }
 ]
 
 @NgModule({
