@@ -101,7 +101,7 @@ app.get("/shopify/callback", (req, res) => {
           access_token = user.token;
           res.sendFile(path.join(__dirname + "/dist/index.html"));
         } else {
-          GetAccessToken(shop);
+          GetAccessToken(shop,code);
         }
       }
     });
@@ -112,7 +112,7 @@ app.get("/shopify/callback", (req, res) => {
   }
 });
 
-function GetAccessToken(shop) {
+function GetAccessToken(shop, code) {
   //Get permenant access_token for the store and save to DB for future use
   const accessTokenRequestUrl = "https://" + shop + "/admin/oauth/access_token";
 

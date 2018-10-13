@@ -11,7 +11,7 @@ export class AppComponent {
 
   constructor(private orderService: OrderService) {
     //Call this to ensure, we grab the token from DB for an existing client
-    let x = this.orderService.getaccess();
-    alert(x);
+    //let x = this.orderService.getaccess();
+    //alert(x);
   }
 }
