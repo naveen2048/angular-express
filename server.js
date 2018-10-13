@@ -7,7 +7,7 @@ const crypto = require("crypto");
 const querystring = require("querystring");
 const request = require("request-promise");
 const mongojs = require("mongojs");
-const db = mongojs("mongodb://courierfast:B@ng@ru1528@ds125953.mlab.com:25953/courierfast");
+const db = mongojs("mongodb://courierfast:courierfast123@ds125953.mlab.com:25953/courierfast");
 
 const app = express();
 
