@@ -22,7 +22,7 @@ const apiKey = "a35d53496a9148de40d1652be43fd9d3"; //process.env.SHOPIFY_API_KEY
 const apiSecret = "2c457122c3e7372ed5dae081cdd130c3"; //process.env.SHOPIFY_API_SECRET;
 const scopes = "read_products";
 const forwardingAddress = "https://mnk-angular-express.herokuapp.com";
-const access_token = "";
+var access_token = "";
 
 //Get Shopname on app initialized, once app is installed,
 // we need to fetch the "shop" which is passed by Shopify via url of the iframe
