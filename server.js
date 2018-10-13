@@ -6,6 +6,8 @@ const cookie = require("cookie");
 const crypto = require("crypto");
 const querystring = require("querystring");
 const request = require("request-promise");
+const mongojs = require("mongojs");
+const db = mongojs("mongodb://courierfast:B@ng@ru1528@ds125953.mlab.com:25953/courierfast");
 
 const app = express();
 
@@ -18,6 +20,13 @@ const apiKey = "a35d53496a9148de40d1652be43fd9d3";//process.env.SHOPIFY_API_KEY;
 const apiSecret = "2c457122c3e7372ed5dae081cdd130c3"; //process.env.SHOPIFY_API_SECRET;
 const scopes = "read_products";
 const forwardingAddress = "https://mnk-angular-express.herokuapp.com";
+
+//Get Shopname on app initialized, once app is installed,
+// we need to fetch the "shop" which is passed by Shopify via url of the iframe
+app.get("/app/t", function(req,res){
+  var currentUrl = document.referrer;
+  res.send(currentUrl);
+});
 
 //Orders
 app.get("/shopify/orders", function(req, res) {
@@ -67,6 +76,7 @@ app.get("/shopify", (req, res) => {
 
 //redirect url: /shopify/callback
 app.get("/shopify/callback", (req, res) => {
+  const access_token;
   const { shop, hmac, code, state } = req.query;
   const stateCookie = cookie.parse(req.headers.cookie).state;
 
@@ -74,16 +84,46 @@ app.get("/shopify/callback", (req, res) => {
     return res.status(403).send("Request origin cannot be verified");
   }
 
+  // Validate request is from Shopify
   if (shop && hmac && code) {
     if (!validateRequest(req, hmac)) {
       return "Request invalid or not from shopify";
     }
 
-    // TODO
-    // Validate request is from Shopify
-    // Exchange temporary code for a permanent access token
-    // Use access token to make API call to 'shop' endpoint
-    var mystore = shop;
+    //Get permenant access_token for the store and save to DB for future use
+    const accessTokenRequestUrl = "https://" + shop + 
+    "/admin/oauth/access_token";
+    
+    const accessTokenPayload = {
+      client_id: apiKey,
+      client_secret: apiSecret,
+      code
+    };
+
+    superagent
+        .post(accessTokenRequestUrl, {json : accessTokenPayload})
+        .end((err,response) => {
+          access_token = response.access_token;
+
+          //save to database
+          //Save the shope details who are installing the app
+          // Shop: Shop name passed by Shopify
+          // token: token used to access the shop data, when using the app
+          var appUser = {
+            shop: shop,
+            token:code,
+            installdate: new Date(),
+            isactive: true
+          };
+
+          db.appUsers.save(appUser,function(err, user){
+              if(err){
+                res.send(err);
+              }
+              res.json(user);
+                });
+          });
+
     // res.render("index", { mystore: mystore });
     res.sendFile(path.join(__dirname + "/dist/index.html"));
   } else {

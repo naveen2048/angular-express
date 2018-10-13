@@ -25,4 +25,10 @@ export class OrderService {
     getVendors(): Observable<any> {
         return of(this.vendors);
     }
+
+    getaccess(): any {
+        this.http.get(environment.TOKEN).subscribe(data => {
+            return data;
+        });
+    }
 }
