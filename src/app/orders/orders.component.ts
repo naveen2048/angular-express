@@ -7,7 +7,9 @@ import { OrderService } from '../services/order.service';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
-
+  
+  showDetails:boolean = false;
+  searchText:string;
   Orders:any[];
   constructor(private orderService:OrderService) { }
 

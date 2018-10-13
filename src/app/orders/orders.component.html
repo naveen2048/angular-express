@@ -1,5 +1,16 @@
-<div class="row" *ngFor="let order of Orders">
+<div class="container">
+  <div class="row">
+    <app-spinner [showSpinner]="!Orders"></app-spinner>
+  </div>
+  <div class="row" *ngIf="Orders">
+    <div class="col-sm-8">
+      <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search by order #" />
+    </div>
+  </div>
+  <hr *ngIf="Orders" />
+<div class="row" *ngFor="let order of Orders | orderFilter:searchText">
   <div class="col-sm-12">
     <app-order-details [order]="order"></app-order-details>
   </div>
+</div>
 </div>
