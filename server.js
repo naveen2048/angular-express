@@ -96,7 +96,7 @@ app.get("/shopify/callback", (req, res) => {
       if (err) {
         //do nothing
       } else {
-        if (user.shop != "" || user.shop != undefined) {
+        if ( user &&  (user.shop != "" || user.shop != undefined)) {
           access_token = user.token;
           res.sendFile(path.join(__dirname + "/dist/index.html"));
         } else {
