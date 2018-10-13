@@ -24,8 +24,7 @@ const forwardingAddress = "https://mnk-angular-express.herokuapp.com";
 //Get Shopname on app initialized, once app is installed,
 // we need to fetch the "shop" which is passed by Shopify via url of the iframe
 app.get("/app/t", function(req,res){
-  var currentUrl = document.referrer;
-  res.send(currentUrl);
+  res.send(req.query.shop);
 });
 
 //Orders
