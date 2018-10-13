@@ -14,6 +14,8 @@ app.use(express.static(__dirname + "/dist"));
 app.listen(process.env.PORT || 8080);
 
 //variables
+const apiKey = "a35d53496a9148de40d1652be43fd9d3";//process.env.SHOPIFY_API_KEY;
+const apiSecret = "2c457122c3e7372ed5dae081cdd130c3"; //process.env.SHOPIFY_API_SECRET;
 const scopes = "read_products";
 const forwardingAddress = "https://mnk-angular-express.herokuapp.com";
 
