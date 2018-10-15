@@ -23,9 +23,7 @@ export class VendorsListComponent implements OnInit {
     this.showNewVendorForm = !this.showNewVendorForm;
   }
 
-  saveVendor(){
-    
-  }
+  saveVendor(){ }
 
   cancel(){
     this.showNewVendorForm = !this.showNewVendorForm;
