@@ -36,7 +36,8 @@
     "request-promise": "^4.2.2",
     "rxjs": "^5.5.6",
     "superagent": "^3.5.2",
-    "zone.js": "^0.8.19"
+    "zone.js": "^0.8.19",
+    "typescript": "~2.5.3"
   },
   "devDependencies": {
     "@angular/language-service": "^5.2.0",
