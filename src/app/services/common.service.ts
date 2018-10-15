@@ -1,20 +1,17 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
-import { environment } from "../../environments/environment";
-import "rxjs/add/operator/map";
 import { of } from "rxjs/observable/of";
+import "rxjs/add/operator/map";
+import { environment } from "../../environments/environment";
 
-Injectable();
-export class OrderService {
-  //TODO: This needs to come from MongoDB
-  //For now testing purpose only
+@Injectable()
+export class CommonService {
   vendors: any[] = [
     { ID: 1, PICKUP_NAME: "Vendor 1" },
     { ID: 2, PICKUP_NAME: "Vendor 2" }
   ];
 
-  //private uri: string ="https://mnk-angular-express.herokuapp.com";
   constructor(private http: HttpClient) {}
 
   getOrders(): Observable<any[]> {
@@ -22,12 +19,8 @@ export class OrderService {
     return this.http.get(uri).map((data: any) => <any[]>data.orders);
   }
 
-  getVendors(): Observable<any[]> {
-    //return of(this.vendors);
-    return this.http
-               .get("../../assets/vendors.json")
-               .map((data:any) => <any[]>data.vendors)
-
+  getVendors(): Observable<any> {
+    return this.http.get(environment.VENDORS_URI).map(data => <any>data);
   }
 
   getaccess(): any {

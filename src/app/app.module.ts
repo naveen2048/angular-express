@@ -7,17 +7,19 @@ import { AppComponent } from './app.component';
 import { HeaderNavigationComponent } from './header-navigation/header-navigation.component';
 import { DashobardComponent } from './dashobard/dashobard.component';
 import { OrdersComponent } from './orders/orders.component';
-import { OrderService } from './services/order.service';
 import { HttpClientModule } from '@angular/common/http';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { FilterPipe } from './shared/filter';
 import { SpinnerComponent } from './shared/spinner';
 import { VendorsDropdownComponent } from './shared/vendors-dropdown';
+import { CommonService } from './services/common.service';
+import { VendorsListComponent } from './vendors-list/vendors-list.component';
 
 const routes: Routes = [
   { path:'', redirectTo:'home', pathMatch:'full'},
   { path:'home', component:DashobardComponent},
   { path:'orders', component:OrdersComponent},
+  { path:'vendors', component:VendorsListComponent},
   { path:'**', redirectTo:'home' }
 ]
 
@@ -30,7 +32,8 @@ const routes: Routes = [
     OrderDetailsComponent,
     FilterPipe,
     SpinnerComponent,
-    VendorsDropdownComponent
+    VendorsDropdownComponent,
+    VendorsListComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [OrderService],
+  providers: [CommonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

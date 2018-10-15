@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
-import { OrderService } from "../services/order.service";
+import { CommonService } from "../services/common.service";
 
 @Component({
   selector: "app-vendors-dropdown",
@@ -17,7 +17,7 @@ export class VendorsDropdownComponent implements OnInit {
   @Output() selectedVendorChange = new EventEmitter<string>();
 
   vendors: any[] = [];
-  constructor(private vendorService: OrderService) {}
+  constructor(private vendorService: CommonService) {}
 
   ngOnInit() {
     this.vendorService.getVendors().subscribe(data => {

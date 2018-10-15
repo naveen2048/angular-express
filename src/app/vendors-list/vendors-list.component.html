@@ -1,0 +1,152 @@
+<app-spinner [showSpinner]="!vendors"></app-spinner>
+<div *ngIf="vendors">
+  <div class="Polaris-Card">
+    <div class="Polaris-Card__Section">
+      <div class="Polaris-Stack Polaris-Stack--vertical">
+        <div class="Polaris-Stack__Item">
+          <button type="button" (click)="newVendor()" *ngIf="!showNewVendorForm" class="Polaris-Button Polaris-Button--primary">
+            <span class="Polaris-Button__Content"><span>Add New</span>
+            </span>
+          </button>
+          <button type="button" (click)="saveVendor()" *ngIf="showNewVendorForm" class="Polaris-Button Polaris-Button--primary">
+            <span class="Polaris-Button__Content"><span>Save</span>
+            </span>
+          </button>
+          <button type="button" (click)="cancel()" *ngIf="showNewVendorForm" class="Polaris-Button Polaris-Button--destructive">
+            <span class="Polaris-Button__Content"><span>Cancel</span>
+            </span>
+          </button>
+        </div>
+        <div class="Polaris-Stack__Item details">
+          <div id="basic-collapsible" aria-hidden="false" *ngIf="showNewVendorForm" class="Polaris-Collapsible Polaris-Collapsible--open"
+            style="height: auto;">
+            <div class="Polaris-Layout__AnnotationContent">
+              <div class="Polaris-Card">
+                <div class="Polaris-Card__Section">
+                  <div class="Polaris-FormLayout">
+                    <div role="group" class="">
+                      <div class="Polaris-FormLayout__Items">
+                        <div class="Polaris-FormLayout__Item">
+                          <div class="">
+                            <div class="Polaris-Labelled__LabelWrapper">
+                              <div class="Polaris-Label"><label id="TextField1Label" for="TextField1" class="Polaris-Label__Text">First
+                                  Name</label></div>
+                            </div>
+                            <div class="Polaris-TextField">
+                              <input id="TextField1" value="" placeholder="Fashion" class="Polaris-TextField__Input"
+                                aria-labelledby="TextField1Label" aria-invalid="false">
+                              <div class="Polaris-TextField__Backdrop"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="Polaris-FormLayout__Item">
+                          <div class="">
+                            <div class="Polaris-Labelled__LabelWrapper">
+                              <div class="Polaris-Label"><label id="TextField2Label" for="TextField2" class="Polaris-Label__Text">Last
+                                  Name</label></div>
+                            </div>
+                            <div class="Polaris-TextField">
+                              <input id="TextField2" value="" placeholder="Trends" class="Polaris-TextField__Input"
+                                aria-labelledby="TextField2Label" aria-invalid="false">
+                              <div class="Polaris-TextField__Backdrop"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="Polaris-FormLayout__Item">
+                      <div class="">
+                        <div class="Polaris-Labelled__LabelWrapper">
+                          <div class="Polaris-Label"><label id="TextField3Label" for="TextField3" class="Polaris-Label__Text">Email</label></div>
+                        </div>
+                        <div class="Polaris-TextField">
+                          <input id="TextField3" value="" placeholder="example@email.com" class="Polaris-TextField__Input"
+                            aria-labelledby="TextField3Label" aria-invalid="false">
+                          <div class="Polaris-TextField__Backdrop"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="Polaris-FormLayout__Item">
+                      <div class="">
+                        <div class="Polaris-Labelled__LabelWrapper">
+                          <div class="Polaris-Label"><label id="TextField5Label" for="TextField5" class="Polaris-Label__Text">Address
+                              1</label></div>
+                        </div>
+                        <div class="Polaris-TextField Polaris-TextField--multiline">
+                          <textarea id="TextField5" placeholder="Shop # or building name" class="Polaris-TextField__Input"
+                            aria-labelledby="TextField5Label" aria-invalid="false"></textarea>
+                          <div class="Polaris-TextField__Backdrop"></div>
+                          <div aria-hidden="true" class="Polaris-TextField__Resizer">
+                            <div class="Polaris-TextField__DummyInput">Website, ads, email, etc.<br></div>
+                            <div class="Polaris-TextField__DummyInput"><br></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div role="group" class="">
+                      <div class="Polaris-FormLayout__Items">
+                        <div class="Polaris-FormLayout__Item">
+                          <div class="">
+                            <div class="Polaris-Labelled__LabelWrapper">
+                              <div class="Polaris-Label"><label id="TextField1Label" for="TextField1" class="Polaris-Label__Text">Phone</label></div>
+                            </div>
+                            <div class="Polaris-TextField">
+                              <input id="TextField1" value="" placeholder="phone number" class="Polaris-TextField__Input"
+                                aria-labelledby="TextField1Label" aria-invalid="false">
+                              <div class="Polaris-TextField__Backdrop"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="Polaris-FormLayout__Item">
+                          <div class="">
+                            <div class="Polaris-Labelled__LabelWrapper">
+                              <div class="Polaris-Label"><label id="TextField2Label" for="TextField2" class="Polaris-Label__Text">Mobile</label></div>
+                            </div>
+                            <div class="Polaris-TextField">
+                              <input id="TextField2" value="" placeholder="mobile number" class="Polaris-TextField__Input"
+                                aria-labelledby="TextField2Label" aria-invalid="false">
+                              <div class="Polaris-TextField__Backdrop"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ <hr *ngIf="!showNewVendorForm" />
+  <div *ngIf="!showNewVendorForm">
+    <div class="Polaris-Card" *ngFor="let vendor of vendors">
+      <div class="Polaris-Card__Section">
+        <div class="Polaris-Stack Polaris-Stack--vertical">
+          <div class="Polaris-Stack__Item">
+            <div class="row">
+              <div class="col-sm-3">
+                <b>{{vendor.PICKUP_NAME}}</b>
+              </div>
+              <div class="col-sm-3">
+                {{vendor.PICKUP_ADDRESS_LINE1}}<br />
+                {{vendor.PICKUP_ADDRESS_LINE2}}<br />
+                {{vendor.PICKUP_PINCODE}}
+              </div>
+              <div class="col-sm-3">
+                Phone: {{vendor.PICKUP_PHONE}}<br />
+                Mobile: {{vendor.PICKUP_MOBILE}}<br />
+              </div>
+              <div class="col-sm-3">
+                Seller GSTIN : {{vendor.SELLER_GSTIN}}<br />
+                Packing Type : {{vendor.PACKING_TYPE}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

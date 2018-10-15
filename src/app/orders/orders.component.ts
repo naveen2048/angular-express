@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from '../services/order.service';
+import { CommonService } from '../services/common.service';
 
 @Component({
   selector: 'app-orders',
@@ -11,7 +11,7 @@ export class OrdersComponent implements OnInit {
   showDetails:boolean = false;
   searchText:string;
   Orders:any[];
-  constructor(private orderService:OrderService) { }
+  constructor(private orderService:CommonService) { }
 
   ngOnInit() {
     this.orderService

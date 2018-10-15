@@ -95,13 +95,12 @@ app.get("/shopify/callback", (req, res) => {
     db.appUsers.findOne({ shop: shop }, function(err, user) {
       if (err) {
         //do nothing
-      } 
-      else {
+      } else {
         if (user && (user.shop != "" || user.shop != undefined)) {
           access_token = user.token;
           res.sendFile(path.join(__dirname + "/dist/index.html"));
         } else {
-          GetAccessToken(shop,code,req,res);
+          GetAccessToken(shop, code, req, res);
         }
       }
     });
@@ -112,7 +111,17 @@ app.get("/shopify/callback", (req, res) => {
   }
 });
 
-function GetAccessToken(shop, code,req,res) {
+//Get vendors
+app.get("/shopify/vendors", function(req, res) {
+  db.vendors.find(function(err, vendors) {
+    if (err) {
+      res.send(err);
+    }
+    res.json(vendors);
+  });
+});
+
+function GetAccessToken(shop, code, req, res) {
   //Get permenant access_token for the store and save to DB for future use
   const accessTokenRequestUrl = "https://" + shop + "/admin/oauth/access_token";
 
