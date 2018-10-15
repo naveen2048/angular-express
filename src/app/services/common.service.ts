@@ -1,17 +1,12 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
-import { of } from "rxjs/observable/of";
 import "rxjs/add/operator/map";
 import { environment } from "../../environments/environment";
 
 @Injectable()
 export class CommonService {
-  vendors: any[] = [
-    { ID: 1, PICKUP_NAME: "Vendor 1" },
-    { ID: 2, PICKUP_NAME: "Vendor 2" }
-  ];
-
+  
   constructor(private http: HttpClient) {}
 
   getOrders(): Observable<any[]> {

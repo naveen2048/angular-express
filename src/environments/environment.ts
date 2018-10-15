@@ -4,7 +4,7 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  ORDERS_URI:"https://mnk-angular-express.herokuapp.com/shopify/orders",
+  ORDERS_URI:"http://localhost:8080/shopify/orders",
   TOKEN:"https://mnk-angular-express.herokuapp.com/access/t",
   VENDORS_URI:"http://localhost:8080/shopify/vendors",
   production: false
