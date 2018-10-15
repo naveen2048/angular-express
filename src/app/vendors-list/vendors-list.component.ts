@@ -9,7 +9,6 @@ import { CommonService } from '../services/common.service';
 export class VendorsListComponent implements OnInit {
   vendors: any[];
   showNewVendorForm:boolean = false;
-  newButton:string = "Add New";
 
   constructor(private vendorService: CommonService) { }
 
@@ -22,7 +21,6 @@ export class VendorsListComponent implements OnInit {
 
   newVendor() {
     this.showNewVendorForm = !this.showNewVendorForm;
-    this.newButton = "Save";
   }
 
   saveVendor(){
