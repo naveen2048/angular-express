@@ -8,10 +8,13 @@ const morgan = require("morgan");
 const querystring = require("querystring");
 const request = require("request-promise");
 var config = require('./config'); // get our config file
+//DB module & initilization
 var dbModule = require("./routes/db");
 dbModule.initDb();
 
 var vendor = require("./routes/vendor");
+
+var db = dbModule.getDb();
 
 const app = express();
 
