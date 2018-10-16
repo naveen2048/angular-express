@@ -4,24 +4,28 @@ const superagent = require("superagent");
 const nonce = require("nonce")();
 const cookie = require("cookie");
 const crypto = require("crypto");
+const morgan = require("morgan");
 const querystring = require("querystring");
 const request = require("request-promise");
-const mongojs = require("mongojs");
-const db = mongojs(
-  "mongodb://courierfast:courierfast123@ds125953.mlab.com:25953/courierfast"
-);
+var config = require('./config'); // get our config file
+var dbModule = require("./routes/db");
+dbModule.initDb();
+
+var vendor = require("./routes/vendor");
 
 const app = express();
+
+app.use(morgan('dev'));
 
 app.use(express.static(__dirname + "/dist"));
 
 app.listen(process.env.PORT || 8080);
 
 //variables
-const apiKey = "a35d53496a9148de40d1652be43fd9d3"; //process.env.SHOPIFY_API_KEY;
-const apiSecret = "2c457122c3e7372ed5dae081cdd130c3"; //process.env.SHOPIFY_API_SECRET;
-const scopes = "read_products";
-const forwardingAddress = "https://mnk-angular-express.herokuapp.com";
+const apiKey = config.apiKey;
+const apiSecret = config.apiSecret;
+const scopes = config.scopes;
+const forwardingAddress = config.forwardingAddress;
 var access_token = "";
 
 //Get Shopname on app initialized, once app is installed,
@@ -111,15 +115,9 @@ app.get("/shopify/callback", (req, res) => {
   }
 });
 
-//Get vendors
-app.get("/shopify/vendors", function(req, res) {
-  db.vendors.find(function(err, vendors) {
-    if (err) {
-      res.send(err);
-    }
-    res.json(vendors);
-  });
-});
+//Route: Vendors
+app.use("/api", vendor)
+
 
 function GetAccessToken(shop, code, req, res) {
   //Get permenant access_token for the store and save to DB for future use

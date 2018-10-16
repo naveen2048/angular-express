@@ -24,93 +24,99 @@
               <div class="Polaris-Card">
                 <div class="Polaris-Card__Section">
                   <div class="Polaris-FormLayout">
-                    <div role="group" class="">
-                      <div class="Polaris-FormLayout__Items">
-                        <div class="Polaris-FormLayout__Item">
-                          <div class="">
-                            <div class="Polaris-Labelled__LabelWrapper">
-                              <div class="Polaris-Label"><label id="TextField1Label" for="TextField1" class="Polaris-Label__Text">First
-                                  Name</label></div>
-                            </div>
-                            <div class="Polaris-TextField">
-                              <input id="TextField1" value="" placeholder="Fashion" class="Polaris-TextField__Input"
-                                aria-labelledby="TextField1Label" aria-invalid="false">
-                              <div class="Polaris-TextField__Backdrop"></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="Polaris-FormLayout__Item">
-                          <div class="">
-                            <div class="Polaris-Labelled__LabelWrapper">
-                              <div class="Polaris-Label"><label id="TextField2Label" for="TextField2" class="Polaris-Label__Text">Last
-                                  Name</label></div>
-                            </div>
-                            <div class="Polaris-TextField">
-                              <input id="TextField2" value="" placeholder="Trends" class="Polaris-TextField__Input"
-                                aria-labelledby="TextField2Label" aria-invalid="false">
-                              <div class="Polaris-TextField__Backdrop"></div>
+                    <form>
+                      <div role="group" class="">
+                        <div class="Polaris-FormLayout__Items">
+                          <div class="Polaris-FormLayout__Item">
+                            <div class="">
+                              <div class="Polaris-Labelled__LabelWrapper">
+                                <div class="Polaris-Label"><label id="TextField1Label" for="TextField1" class="Polaris-Label__Text">First
+                                    Name</label></div>
+                              </div>
+                              <div class="Polaris-TextField">
+                                <input id="TextField1" name="firstname" value="" [(ngModel)]="vendor.PICKUP_NAME"
+                                  placeholder="Fashion" class="Polaris-TextField__Input" aria-labelledby="TextField1Label"
+                                  aria-invalid="false">
+                                <div class="Polaris-TextField__Backdrop"></div>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="Polaris-FormLayout__Item">
-                      <div class="">
-                        <div class="Polaris-Labelled__LabelWrapper">
-                          <div class="Polaris-Label"><label id="TextField3Label" for="TextField3" class="Polaris-Label__Text">Email</label></div>
-                        </div>
-                        <div class="Polaris-TextField">
-                          <input id="TextField3" value="" placeholder="example@email.com" class="Polaris-TextField__Input"
-                            aria-labelledby="TextField3Label" aria-invalid="false">
-                          <div class="Polaris-TextField__Backdrop"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="Polaris-FormLayout__Item">
-                      <div class="">
-                        <div class="Polaris-Labelled__LabelWrapper">
-                          <div class="Polaris-Label"><label id="TextField5Label" for="TextField5" class="Polaris-Label__Text">Address
-                              1</label></div>
-                        </div>
-                        <div class="Polaris-TextField Polaris-TextField--multiline">
-                          <textarea id="TextField5" placeholder="Shop # or building name" class="Polaris-TextField__Input"
-                            aria-labelledby="TextField5Label" aria-invalid="false"></textarea>
-                          <div class="Polaris-TextField__Backdrop"></div>
-                          <div aria-hidden="true" class="Polaris-TextField__Resizer">
-                            <div class="Polaris-TextField__DummyInput">Website, ads, email, etc.<br></div>
-                            <div class="Polaris-TextField__DummyInput"><br></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div role="group" class="">
-                      <div class="Polaris-FormLayout__Items">
-                        <div class="Polaris-FormLayout__Item">
-                          <div class="">
-                            <div class="Polaris-Labelled__LabelWrapper">
-                              <div class="Polaris-Label"><label id="TextField1Label" for="TextField1" class="Polaris-Label__Text">Phone</label></div>
-                            </div>
-                            <div class="Polaris-TextField">
-                              <input id="TextField1" value="" placeholder="phone number" class="Polaris-TextField__Input"
-                                aria-labelledby="TextField1Label" aria-invalid="false">
-                              <div class="Polaris-TextField__Backdrop"></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="Polaris-FormLayout__Item">
-                          <div class="">
-                            <div class="Polaris-Labelled__LabelWrapper">
-                              <div class="Polaris-Label"><label id="TextField2Label" for="TextField2" class="Polaris-Label__Text">Mobile</label></div>
-                            </div>
-                            <div class="Polaris-TextField">
-                              <input id="TextField2" value="" placeholder="mobile number" class="Polaris-TextField__Input"
-                                aria-labelledby="TextField2Label" aria-invalid="false">
-                              <div class="Polaris-TextField__Backdrop"></div>
+                          <div class="Polaris-FormLayout__Item">
+                            <div class="">
+                              <div class="Polaris-Labelled__LabelWrapper">
+                                <div class="Polaris-Label"><label id="TextField2Label" for="TextField2" class="Polaris-Label__Text">Last
+                                    Name</label></div>
+                              </div>
+                              <div class="Polaris-TextField">
+                                <input id="TextField2" value="" name="lastname" placeholder="Trends" class="Polaris-TextField__Input"
+                                  aria-labelledby="TextField2Label" aria-invalid="false">
+                                <div class="Polaris-TextField__Backdrop"></div>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                      <div class="Polaris-FormLayout__Item">
+                        <div class="">
+                          <div class="Polaris-Labelled__LabelWrapper">
+                            <div class="Polaris-Label"><label id="TextField3Label" for="TextField3" class="Polaris-Label__Text">Email</label></div>
+                          </div>
+                          <div class="Polaris-TextField">
+                            <input id="TextField3" value="" placeholder="example@email.com" class="Polaris-TextField__Input"
+                              aria-labelledby="TextField3Label" aria-invalid="false">
+                            <div class="Polaris-TextField__Backdrop"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="Polaris-FormLayout__Item">
+                        <div class="">
+                          <div class="Polaris-Labelled__LabelWrapper">
+                            <div class="Polaris-Label"><label id="TextField5Label" for="TextField5" class="Polaris-Label__Text">Address
+                                1</label></div>
+                          </div>
+                          <div class="Polaris-TextField Polaris-TextField--multiline">
+                            <textarea id="TextField5" name="address1" [(ngModel)]="vendor.PICKUP_ADDRESS_LINE1"
+                              placeholder="Shop # or building name" class="Polaris-TextField__Input" aria-labelledby="TextField5Label"
+                              aria-invalid="false"></textarea>
+                            <div class="Polaris-TextField__Backdrop"></div>
+                            <div aria-hidden="true" class="Polaris-TextField__Resizer">
+                              <div class="Polaris-TextField__DummyInput">Website, ads, email, etc.<br></div>
+                              <div class="Polaris-TextField__DummyInput"><br></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div role="group" class="">
+                        <div class="Polaris-FormLayout__Items">
+                          <div class="Polaris-FormLayout__Item">
+                            <div class="">
+                              <div class="Polaris-Labelled__LabelWrapper">
+                                <div class="Polaris-Label"><label id="TextField1Label" for="TextField1" class="Polaris-Label__Text">Phone</label></div>
+                              </div>
+                              <div class="Polaris-TextField">
+                                <input id="TextField1" value="" name="phone" [(ngModel)]="vendor.PICKUP_PHONE"
+                                  placeholder="phone number" class="Polaris-TextField__Input" aria-labelledby="TextField1Label"
+                                  aria-invalid="false">
+                                <div class="Polaris-TextField__Backdrop"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="Polaris-FormLayout__Item">
+                            <div class="">
+                              <div class="Polaris-Labelled__LabelWrapper">
+                                <div class="Polaris-Label"><label id="TextField2Label" for="TextField2" class="Polaris-Label__Text">Mobile</label></div>
+                              </div>
+                              <div class="Polaris-TextField">
+                                <input id="TextField2" value="" name="mobile" [(ngModel)]="vendor.PICKUP_MOBILE"
+                                  placeholder="mobile number" class="Polaris-TextField__Input" aria-labelledby="TextField2Label"
+                                  aria-invalid="false">
+                                <div class="Polaris-TextField__Backdrop"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -120,7 +126,7 @@
       </div>
     </div>
   </div>
- <hr *ngIf="!showNewVendorForm" />
+  <hr *ngIf="!showNewVendorForm" />
   <div *ngIf="!showNewVendorForm">
     <div class="Polaris-Card" *ngFor="let vendor of vendors">
       <div class="Polaris-Card__Section">
@@ -140,7 +146,7 @@
                 Mobile: {{vendor.PICKUP_MOBILE}}<br />
               </div>
               <div class="col-sm-3">
-                Seller GSTIN : {{vendor.SELLER_GSTIN}}<br />
+                Seller GSTIN : {{vendor.PACKING_TYPE}}<br />
                 Packing Type : {{vendor.PACKING_TYPE}}
               </div>
             </div>

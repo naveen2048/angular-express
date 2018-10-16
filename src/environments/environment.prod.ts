@@ -1,6 +1,8 @@
 export const environment = {
-  ORDERS_URI:"https://mnk-angular-express.herokuapp.com/shopify/orders",
+  baseUri:"https://mnk-angular-express.herokuapp.com/",
+  ORDERS_URI: "https://mnk-angular-express.herokuapp.com/shopify/orders",
   TOKEN:"https://mnk-angular-express.herokuapp.com/access/t",
-  VENDORS_URI:"http://mnk-angular-express.herokuapp.com/shopify/vendors",
+  VENDORS_URI_GET: "https://mnk-angular-express.herokuapp.com/api/vendors",
+  VENDORS_URI_SAVE: "https://mnk-angular-express.herokuapp.com/api/vendor",
   production: true
 };

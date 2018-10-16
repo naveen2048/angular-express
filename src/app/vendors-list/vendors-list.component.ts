@@ -1,20 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonService } from '../services/common.service';
+import { Component, OnInit } from "@angular/core";
+import { CommonService } from "../services/common.service";
+import { vendorModel } from "../models/vendor.model";
 
 @Component({
-  selector: 'app-vendors-list',
-  templateUrl: './vendors-list.component.html',
-  styleUrls: ['./vendors-list.component.css']
+  selector: "app-vendors-list",
+  templateUrl: "./vendors-list.component.html",
+  styleUrls: ["./vendors-list.component.css"]
 })
 export class VendorsListComponent implements OnInit {
-  vendors: any[];
-  showNewVendorForm:boolean = false;
+  vendors: vendorModel[];
+  vendor: vendorModel = new vendorModel();
+  showNewVendorForm: boolean = false;
 
-  constructor(private vendorService: CommonService) { }
+  constructor(private vendorService: CommonService) {}
 
   ngOnInit() {
     this.vendorService.getVendors().subscribe(data => {
-      debugger;
       this.vendors = data;
     });
   }
@@ -23,10 +24,17 @@ export class VendorsListComponent implements OnInit {
     this.showNewVendorForm = !this.showNewVendorForm;
   }
 
-  saveVendor(){ }
-
-  cancel(){
-    this.showNewVendorForm = !this.showNewVendorForm;
+  saveVendor() {
+    this.vendorService
+      .saveVendor(this.vendor)
+      .subscribe(vendor => {
+        this.vendors.push(vendor);
+        this.vendor = new vendorModel();
+        this.cancel();
+      });
   }
 
+  cancel() {
+    this.showNewVendorForm = !this.showNewVendorForm;
+  }
 }

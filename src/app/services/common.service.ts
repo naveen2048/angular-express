@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
 import { environment } from "../../environments/environment";
+import { vendorModel } from '../models/vendor.model';
 
 @Injectable()
 export class CommonService {
@@ -14,8 +15,17 @@ export class CommonService {
     return this.http.get(uri).map((data: any) => <any[]>data.orders);
   }
 
-  getVendors(): Observable<any> {
-    return this.http.get(environment.VENDORS_URI).map(data => <any>data);
+  getVendors(): Observable<vendorModel[]> {
+    return this.http.get(environment.VENDORS_URI_GET).map(data => <vendorModel[]>data);
+  }
+
+  saveVendor(vendor): Observable<vendorModel> {
+    var headers = new HttpHeaders();
+    headers.set('Content-type', 'application/x-www-form-urlencoded');
+
+    return this.http
+               .post(environment.VENDORS_URI_SAVE, JSON.stringify(vendor), { headers: headers })
+               .map(data => <vendorModel>data);
   }
 
   getaccess(): any {
