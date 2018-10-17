@@ -38,7 +38,7 @@ import { ICourier } from '../models/ICourier';
         </div>
       </div>
       <hr/>
-      <div class="Polaris-Card">
+      <div class="Polaris-Card"  *ngIf="couriers">
       <div class="Polaris-Card__Section">
         <div class="Polaris-Stack Polaris-Stack--vertical">
           <div class="Polaris-Stack__Item">
@@ -77,7 +77,6 @@ export class CourierVendorsComponent implements OnInit {
         .getCourier("zinnga") //remove before deploying
         .subscribe(data => {
           this.couriers = data;
-          console.log(this.couriers);
         });
   }
 
