@@ -37,8 +37,8 @@ import { ICourier } from '../models/ICourier';
           </div>
         </div>
       </div>
-      <hr/>
-      <div class="Polaris-Card"  *ngIf="couriers">
+      <hr *ngIf="couriers" />
+      <div class="Polaris-Card" *ngIf="couriers">
       <div class="Polaris-Card__Section">
         <div class="Polaris-Stack Polaris-Stack--vertical">
           <div class="Polaris-Stack__Item">
