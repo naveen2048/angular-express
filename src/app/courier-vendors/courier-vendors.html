@@ -1,0 +1,40 @@
+<app-spinner [showSpinner]="!couriers"></app-spinner>
+<div class="Polaris-Card" *ngIf="couriers">
+    <div class="Polaris-Card__Section">
+        <div class="Polaris-Stack Polaris-Stack--vertical">
+            <div class="Polaris-Stack__Item">
+                <button type="button" (click)="loadComponent(1)" class="Polaris-Button Polaris-Button--primary">
+                    <span class="Polaris-Button__Content"><span>Delhivery</span>
+                    </span>
+                </button>
+                <button type="button" (click)="loadComponent(2)" class="Polaris-Button Polaris-Button--primary">
+                    <span class="Polaris-Button__Content"><span>Ecom</span>
+                    </span>
+                </button>
+                <button type="button" (click)="loadComponent(3)" class="Polaris-Button Polaris-Button--primary">
+                    <span class="Polaris-Button__Content"><span>Aramax</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<hr *ngIf="couriers" />
+<div class="Polaris-Card" *ngIf="couriers">
+    <div class="Polaris-Card__Section">
+        <div class="Polaris-Stack">
+            <div class="Polaris-Stack__Item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <ng-template courier-host></ng-template>
+                        </div>
+                        <div class="col-sm-2">
+                            <app-image [source]="imageName" [size]="imageSize"></app-image>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

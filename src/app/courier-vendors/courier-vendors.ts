@@ -11,49 +11,20 @@ import { DelhiveryComponent } from "./delhivery/delhivery.component";
 import { EcomComponent } from "./ecom/ecom.component";
 import { AramaxComponent } from './aramax/aramax.component';
 import { courierDataModel } from '../models/courier.model';
-import { CourierType } from "../models";
+import { CourierType, ImageSize } from "../models";
 import { ICourier } from '../models/ICourier';
 
 @Component({
-  template: `
-  <app-spinner [showSpinner]="!couriers"></app-spinner>
-  <div class="Polaris-Card" *ngIf="couriers">
-  <div class="Polaris-Card__Section">
-    <div class="Polaris-Stack Polaris-Stack--vertical">
-      <div class="Polaris-Stack__Item">
-        <button type="button" (click)="loadComponent(1)" class="Polaris-Button Polaris-Button--primary">
-          <span class="Polaris-Button__Content"><span>Delhivery</span>
-          </span>
-        </button>
-        <button type="button" (click)="loadComponent(2)"  class="Polaris-Button Polaris-Button--primary">
-          <span class="Polaris-Button__Content"><span>Ecom</span>
-          </span>
-        </button>
-        <button type="button" (click)="loadComponent(3)"  class="Polaris-Button Polaris-Button--primary">
-          <span class="Polaris-Button__Content"><span>Aramax</span>
-          </span>
-        </button>
-      </div>
-          </div>
-        </div>
-      </div>
-      <hr *ngIf="couriers" />
-      <div class="Polaris-Card" *ngIf="couriers">
-      <div class="Polaris-Card__Section">
-        <div class="Polaris-Stack Polaris-Stack--vertical">
-          <div class="Polaris-Stack__Item">
-          <ng-template courier-host></ng-template> 
-          </div>
-          </div>
-        </div>
-     </div>`,
+  templateUrl:'courier-vendors.html',
   styleUrls: []
 })
 export class CourierVendorsComponent implements OnInit {
 
   @ViewChild(CourierDirective) courierHost: CourierDirective;
-
+  
   couriers:courierDataModel[];
+  imageName:string;
+  imageSize:string = ImageSize.Medium;
 
   dynamicComponent: courierItem[] = [
     new courierItem(DelhiveryComponent, 1, CourierType.Delhivery),
@@ -77,6 +48,8 @@ export class CourierVendorsComponent implements OnInit {
         .getCourier("zinnga") //remove before deploying
         .subscribe(data => {
           this.couriers = data;
+          //Initial load, ensure Delhivery is loaded
+          this.loadComponent(1);
         });
   }
 
@@ -93,7 +66,11 @@ export class CourierVendorsComponent implements OnInit {
     let courierComponent = viewContainerRef.createComponent(componentFactory);
 
     //input data to the dynamic component
-    (<ICourier>courierComponent.instance).model = this.couriers.find(c => c.courierType == _courier.courierType);
+    let selectedCourier = this.couriers.find(c => c.courierType == _courier.courierType);
+    (<ICourier>courierComponent.instance).model = selectedCourier; 
+    
+    //set the image for the selected courier vendor
+    this.imageName = _courier.courierType.toLocaleLowerCase();
 
     courierComponent.instance.dataChange.subscribe(data => {
       this.saveChange(data);

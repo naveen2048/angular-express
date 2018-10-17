@@ -22,6 +22,7 @@ import { CourierVendorsComponent } from "./courier-vendors/courier-vendors";
 import { TabModule } from "angular-tabs-component";
 import { CourierDirective } from "./shared/component-loader-directive";
 import { AramaxComponent } from "./courier-vendors/aramax/aramax.component";
+import { ImageComponent } from "./shared/image-component";
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -47,7 +48,8 @@ const routes: Routes = [
     DelhiveryComponent,
     CourierVendorsComponent,
     CourierDirective,
-    AramaxComponent
+    AramaxComponent,
+    ImageComponent
   ],
   imports: [
     BrowserModule,

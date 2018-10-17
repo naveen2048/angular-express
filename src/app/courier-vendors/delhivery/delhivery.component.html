@@ -1,46 +1,49 @@
 <div class="row">
-    <div class="col-sm-6 col-offset-3">
-      <form novalidate (submit)="save()">
-        <div class="Polaris-FormLayout">
-          <div class="Polaris-FormLayout__Item"><label class="Polaris-Choice" for="Checkbox3"><span class="Polaris-Choice__Control"><span
-                  class="Polaris-Checkbox"><input id="Checkbox3" name="isEnabled" [(ngModel)]="model.isEnabled" type="checkbox" class="Polaris-Checkbox__Input"
-                    aria-invalid="false" role="checkbox" aria-checked="false" value=""><span class="Polaris-Checkbox__Backdrop"></span><span
-                    class="Polaris-Checkbox__Icon"><span class="Polaris-Icon"><svg class="Polaris-Icon__Svg" viewBox="0 0 20 20"
-                        focusable="false" aria-hidden="true">
-                        <path d="M8.315 13.859l-3.182-3.417a.506.506 0 0 1 0-.684l.643-.683a.437.437 0 0 1 .642 0l2.22 2.393 4.942-5.327a.437.437 0 0 1 .643 0l.643.684a.504.504 0 0 1 0 .683l-5.91 6.35a.437.437 0 0 1-.642 0"></path>
-                      </svg></span></span></span></span>
-              <span class="Polaris-Choice__Label">Enable Delhivery</span></label></div>
-          <div class="Polaris-FormLayout__Item">
-            <div class="">
-              <div class="Polaris-Labelled__LabelWrapper">
-                <div class="Polaris-Label"><label id="TextField5Label" for="TextField5" class="Polaris-Label__Text">Warehouse
-                    Name</label></div>
-              </div>
-              <div class="Polaris-TextField"><input id="TextField5" name="warehouse" [(ngModel)]="model.warehouseName" class="Polaris-TextField__Input" type="text"
-                  aria-describedby="TextField5HelpText" aria-label="Email" aria-labelledby="TextField5Label" aria-invalid="false"
-                  value="">
-                <div class="Polaris-TextField__Backdrop"></div>
-              </div>
-              <div class="Polaris-Labelled__HelpText" id="TextField5HelpText"><span>Registered warehouse name on
-                  Delhivery system</span></div>
+  <div class="col-sm-6 col-offset-3">
+    <form novalidate (submit)="save()">
+      <div class="Polaris-FormLayout">
+        <div class="Polaris-FormLayout__Item">
+          <label class="Polaris-Choice" for="Checkbox3"><span class="Polaris-Choice__Control"><span class="Polaris-Checkbox"><input
+                  id="Checkbox3" name="isEnabled" [(ngModel)]="model.isEnabled" type="checkbox" class="Polaris-Checkbox__Input"
+                  aria-invalid="false" role="checkbox" aria-checked="false" value=""><span class="Polaris-Checkbox__Backdrop"></span><span
+                  class="Polaris-Checkbox__Icon"><span class="Polaris-Icon"><svg class="Polaris-Icon__Svg" viewBox="0 0 20 20"
+                      focusable="false" aria-hidden="true">
+                      <path d="M8.315 13.859l-3.182-3.417a.506.506 0 0 1 0-.684l.643-.683a.437.437 0 0 1 .642 0l2.22 2.393 4.942-5.327a.437.437 0 0 1 .643 0l.643.684a.504.504 0 0 1 0 .683l-5.91 6.35a.437.437 0 0 1-.642 0"></path>
+                    </svg></span></span></span></span>
+            <span class="Polaris-Choice__Label">Enable Delhivery</span>
+          </label>
+        </div>
+        <div class="Polaris-FormLayout__Item">
+          <div class="">
+            <div class="Polaris-Labelled__LabelWrapper">
+              <div class="Polaris-Label"><label id="TextField5Label" for="TextField5" class="Polaris-Label__Text">Warehouse
+                  Name</label></div>
+            </div>
+            <div class="Polaris-TextField"><input id="TextField5" name="warehouse" [(ngModel)]="model.warehouseName"
+                class="Polaris-TextField__Input" type="text" aria-describedby="TextField5HelpText" aria-label="Email"
+                aria-labelledby="TextField5Label" aria-invalid="false" value="">
+              <div class="Polaris-TextField__Backdrop"></div>
+            </div>
+            <div class="Polaris-Labelled__HelpText" id="TextField5HelpText"><span>Registered warehouse name on
+                Delhivery system</span></div>
+          </div>
+        </div>
+        <!--Key-->
+        <div class="Polaris-FormLayout__Item">
+          <div class="">
+            <div class="Polaris-Labelled__LabelWrapper">
+              <div class="Polaris-Label"><label id="TextField5Label" for="TextField5" class="Polaris-Label__Text">Delhivery
+                  API Key</label></div>
+            </div>
+            <div class="Polaris-TextField"><input id="TextField5" name="apikey" [(ngModel)]="model.apiKey" class="Polaris-TextField__Input"
+                type="text" aria-describedby="TextField5HelpText" aria-label="Email" aria-labelledby="TextField5Label"
+                aria-invalid="false" value="">
+              <div class="Polaris-TextField__Backdrop"></div>
             </div>
           </div>
-          <!--Key-->
-          <div class="Polaris-FormLayout__Item">
-            <div class="">
-              <div class="Polaris-Labelled__LabelWrapper">
-                <div class="Polaris-Label"><label id="TextField5Label" for="TextField5" class="Polaris-Label__Text">Delhivery
-                    API Key</label></div>
-              </div>
-              <div class="Polaris-TextField"><input id="TextField5" name="apikey" [(ngModel)]="model.apiKey" class="Polaris-TextField__Input" type="text"
-                  aria-describedby="TextField5HelpText" aria-label="Email" aria-labelledby="TextField5Label" aria-invalid="false"
-                  value="">
-                <div class="Polaris-TextField__Backdrop"></div>
-              </div>
-            </div>
-          </div>
-          <div class="Polaris-FormLayout__Item"><button type="button" class="Polaris-Button" (click)="save()"><span class="Polaris-Button__Content"><span>Save</span></span></button></div>
-        </div><span class="Polaris-VisuallyHidden"><button type="submit" aria-hidden="true"></button></span>
-      </form>
-    </div>
+        </div>
+        <div class="Polaris-FormLayout__Item"><button type="button" class="Polaris-Button" (click)="save()"><span class="Polaris-Button__Content"><span>Save</span></span></button></div>
+      </div><span class="Polaris-VisuallyHidden"><button type="submit" aria-hidden="true"></button></span>
+    </form>
   </div>
+</div>
