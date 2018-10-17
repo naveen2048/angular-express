@@ -25,16 +25,35 @@ export class VendorsListComponent implements OnInit {
   }
 
   saveVendor() {
+    //Update
+    debugger;
+    if(this.vendor._id && this.vendor._id != ""){
+      this.vendorService
+          .updateVendor(this.vendor)
+          .subscribe(data => {
+              console.log(data)
+          });
+    } else{ //New
     this.vendorService
       .saveVendor(this.vendor)
       .subscribe(vendor => {
         this.vendors.push(vendor);
-        this.vendor = new vendorModel();
         this.cancel();
       });
+    }
+  }
+
+  editVendor(id) {
+    this.vendorService
+        .getVendor(id)
+        .subscribe(data => {
+          this.vendor = data;
+          this.cancel();
+        });
   }
 
   cancel() {
     this.showNewVendorForm = !this.showNewVendorForm;
+    //this.vendor = new vendorModel();
   }
 }

@@ -5,7 +5,8 @@ let _db;
 
 module.exports = {
     getDb,
-    initDb
+    initDb,
+    getMongojs
 };
 
 function initDb(callback) {
@@ -15,4 +16,8 @@ function initDb(callback) {
 
 function getDb() {
     return _db;
+}
+
+function getMongojs() {
+    return mongojs;
 }

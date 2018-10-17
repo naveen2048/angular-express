@@ -13,6 +13,7 @@ var dbModule = require("./routes/db");
 dbModule.initDb();
 
 var vendor = require("./routes/vendor");
+var courier = require("./routes/courier");
 
 var db = dbModule.getDb();
 
@@ -119,7 +120,9 @@ app.get("/shopify/callback", (req, res) => {
 });
 
 //Route: Vendors
-app.use("/api", vendor)
+app.use("/api", vendor);
+//Route: Couriers
+app.use("/api", courier);
 
 
 function GetAccessToken(shop, code, req, res) {

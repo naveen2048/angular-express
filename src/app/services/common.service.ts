@@ -1,9 +1,10 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Type } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
 import { environment } from "../../environments/environment";
-import { vendorModel } from '../models/vendor.model';
+import { vendorModel, courierDataModel } from '../models/index';
+
 
 @Injectable()
 export class CommonService {
@@ -19,6 +20,10 @@ export class CommonService {
     return this.http.get(environment.VENDORS_URI_GET).map(data => <vendorModel[]>data);
   }
 
+  getVendor(id:any): Observable<vendorModel> {
+    return this.http.get(environment.VENDORS_URI_SAVE + "/" + id).map(data => <vendorModel>data);
+  }
+
   saveVendor(vendor): Observable<vendorModel> {
     var headers = new HttpHeaders();
     headers.set('Content-type', 'application/x-www-form-urlencoded');
@@ -28,9 +33,42 @@ export class CommonService {
                .map(data => <vendorModel>data);
   }
 
+  updateVendor(vendor:vendorModel) {
+    var headers = new HttpHeaders();
+    headers.set('Content-type', 'application/x-www-form-urlencoded');
+
+    return this.http
+               .put(environment.VENDORS_URI_SAVE + "/" + vendor._id,vendor, { headers: headers})
+               .map(data => <vendorModel>data);
+  }
+
   getaccess(): any {
     this.http.get(environment.TOKEN).subscribe(data => {
       return data;
     });
   }
+
+  //Courier
+  saveCourier(courier:courierDataModel) {
+    var headers = new HttpHeaders();
+    headers.set('Content-type', 'application/x-www-form-urlencoded');
+
+    return this.http
+               .post(environment.COURIER_URI_SAVE, JSON.stringify(courier), { headers: headers })
+               .map(data => <courierDataModel>data);
+  }
+
+  //Get Courier by Shop:CourierType
+  getCourier(shop:string): Observable<courierDataModel[]> {
+    var headers = new HttpHeaders();
+    headers.set('Content-type', 'application/x-www-form-urlencoded');
+
+    return this.http
+               .get(environment.COURIER_URI_SAVE + "/" + shop, { headers: headers })
+               .map(data => <courierDataModel[]>data);
+  }
+}
+
+export class courierItem {
+  constructor(public component: Type<any>, public data: any, public courierType:string) {}
 }
