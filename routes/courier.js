@@ -22,12 +22,12 @@ router.get("/courier/:shop", function(req,res,next){
 router.post("/courier", function(req, res, next) {
   let body = "";
   let shop = req.app.get('shop');
+  console.log(shop);
   req.on("data", chunk => {
     body += chunk.toString(); // convert Buffer to string
   });
   req.on("end", () => {
     var vendor = JSON.parse(body);
-    console.log(vendor);
     if (
       vendor.warehouseName == "" ||
       vendor.warehouseName == undefined ||
@@ -39,7 +39,6 @@ router.post("/courier", function(req, res, next) {
         error: "Bad data"
       });
     } else {
-      vendor.shop = shop;
       db.couriers.save(vendor, function(err, vendor) {
         if (err) {
           res.status(400);
