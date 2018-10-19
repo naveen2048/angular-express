@@ -67,8 +67,8 @@ export class CourierVendorsComponent implements OnInit {
 
     //input data to the dynamic component
     let selectedCourier = this.couriers.find(c => c.courierType == _courier.courierType);
-    (<ICourier>courierComponent.instance).model = selectedCourier; 
-    
+    (<ICourier>courierComponent.instance).model = new courierDataModel(); 
+    (<ICourier>courierComponent.instance).model = selectedCourier;
     //set the image for the selected courier vendor
     this.imageName = _courier.courierType.toLocaleLowerCase();
 

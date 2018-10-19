@@ -19,7 +19,7 @@ export class DelhiveryComponent implements OnInit, ICourier {
   }
 
   ngOnInit() {
-    this.model = new courierDataModel();
+    //this.model = new courierDataModel();
   }
 
   save() {
