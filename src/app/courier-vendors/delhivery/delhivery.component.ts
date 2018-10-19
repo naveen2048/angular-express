@@ -11,7 +11,7 @@ import { CourierType } from '../../models/enum';
 })
 export class DelhiveryComponent implements OnInit, ICourier {
 
-  @Input() model: courierDataModel;
+  @Input() model: courierDataModel = new courierDataModel();
   @Output() dataChange = new EventEmitter();
   
   constructor() {}
