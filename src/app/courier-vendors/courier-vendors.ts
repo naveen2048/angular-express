@@ -44,12 +44,12 @@ export class CourierVendorsComponent implements OnInit {
   loadCouriersForShop() {
     //ToDo: This needs to be read from IFrame of shopify, which it pass back to the app
     // for testing "zinnga" is hardcoded
+    let shop = this.courierService.shop;
+
     this.courierService
-        .getCourier(this.courierService.shop) //remove before deploying
+        .getCourier(shop) //remove before deploying
         .subscribe(data => {
           this.couriers = data;
-          //Initial load, ensure Delhivery is loaded
-          //this.loadComponent(1);
         });
   }
 

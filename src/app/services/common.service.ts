@@ -50,7 +50,8 @@ export class CommonService {
   }
 
   getShop() {
-    this.http.get(environment.GET_SHOP_NAME).map(data => {
+    this.http.get(environment.GET_SHOP_NAME)
+    .subscribe(data => {
       this.shop = <any>data;
       console.log("Shop : " + this.shop);
     });

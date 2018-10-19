@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
-import { CommonService } from './services/common.service';
+import { Component, OnInit } from "@angular/core";
+import { CommonService } from "./services/common.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"]
 })
-export class AppComponent {
-  title = 'app';
-  shop: string;
+export class AppComponent implements OnInit {
+  title = "app";
 
-  constructor(private service:CommonService) {
+  constructor(private service: CommonService) {}
+
+  ngOnInit() {
     this.service.getShop();
   }
 }
