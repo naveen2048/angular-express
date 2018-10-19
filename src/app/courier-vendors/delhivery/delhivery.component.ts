@@ -11,10 +11,12 @@ import { CourierType } from '../../models/enum';
 })
 export class DelhiveryComponent implements OnInit, ICourier {
 
-  @Input() model: courierDataModel = new courierDataModel();
+  @Input() model: courierDataModel;
   @Output() dataChange = new EventEmitter();
   
-  constructor() {}
+  constructor() {
+    this.model = new courierDataModel();
+  }
 
   ngOnInit() {}
 
