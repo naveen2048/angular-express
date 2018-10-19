@@ -31,6 +31,7 @@ const apiSecret = config.apiSecret;
 const scopes = config.scopes;
 const forwardingAddress = config.forwardingAddress;
 var access_token = "";
+var shopName = "";
 
 //Get Shopname on app initialized, once app is installed,
 // we need to fetch the "shop" which is passed by Shopify via url of the iframe
@@ -88,6 +89,9 @@ app.get("/shopify", (req, res) => {
 app.get("/shopify/callback", (req, res) => {
   const { shop, hmac, code, state } = req.query;
   const stateCookie = cookie.parse(req.headers.cookie).state;
+
+  //Assign shop to class level variable, for later use
+  app.set('shop',shop);
 
   if (state !== stateCookie) {
     return res.status(403).send("Request origin cannot be verified");

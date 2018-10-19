@@ -16,7 +16,7 @@ import { ICourier } from '../models/ICourier';
 
 @Component({
   templateUrl:'courier-vendors.html',
-  styleUrls: []
+  styleUrls: ['./courier-vendors.css']
 })
 export class CourierVendorsComponent implements OnInit {
 
