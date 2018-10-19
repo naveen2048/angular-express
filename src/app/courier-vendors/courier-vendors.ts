@@ -47,7 +47,7 @@ export class CourierVendorsComponent implements OnInit {
     let shop = this.courierService.shop;
 
     this.courierService
-        .getCourier(shop) //remove before deploying
+        .getCourier(shop.store) //remove before deploying
         .subscribe(data => {
           this.couriers = data;
         });
