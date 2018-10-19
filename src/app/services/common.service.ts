@@ -5,11 +5,14 @@ import "rxjs/add/operator/map";
 import { environment } from "../../environments/environment";
 import { vendorModel, courierDataModel } from '../models/index';
 
+interface IStore {
+  store:string
+}
 
 @Injectable()
 export class CommonService {
   
-  shop:string;
+  shop:IStore;
   constructor(private http: HttpClient) {}
 
   getOrders(): Observable<any[]> {
@@ -52,8 +55,8 @@ export class CommonService {
   getShop() {
     this.http.get(environment.GET_SHOP_NAME)
     .subscribe(data => {
-      this.shop = <any>data;
-      console.log("Shop : " + this.shop);
+      this.shop = <IStore>data;
+      console.log("Shop : " + this.shop.store);
     });
   }
 
