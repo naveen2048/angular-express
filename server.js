@@ -92,6 +92,7 @@ app.get("/shopify/callback", (req, res) => {
 
   //Assign shop to class level variable, for later use
   app.set('shop',shop);
+  shopName = shop;
 
   if (state !== stateCookie) {
     return res.status(403).send("Request origin cannot be verified");
@@ -121,6 +122,10 @@ app.get("/shopify/callback", (req, res) => {
   } else {
     res.status(400).send("Required parameters missing");
   }
+});
+
+app.get("/shopify/shop",function(req,res,next){
+   res.json({ shop: shopName });
 });
 
 //Route: Vendors

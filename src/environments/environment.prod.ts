@@ -5,5 +5,6 @@ export const environment = {
   VENDORS_URI_GET: "https://mnk-angular-express.herokuapp.com/api/vendors",
   VENDORS_URI_SAVE: "https://mnk-angular-express.herokuapp.com/api/vendor",
   COURIER_URI_SAVE: "https://mnk-angular-express.herokuapp.com/api/courier",
+  GET_SHOP_NAME: "https://mnk-angular-express.herokuapp.com/shopify/shop",
   production: true
 };

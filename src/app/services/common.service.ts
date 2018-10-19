@@ -9,6 +9,7 @@ import { vendorModel, courierDataModel } from '../models/index';
 @Injectable()
 export class CommonService {
   
+  shop:string;
   constructor(private http: HttpClient) {}
 
   getOrders(): Observable<any[]> {
@@ -45,6 +46,13 @@ export class CommonService {
   getaccess(): any {
     this.http.get(environment.TOKEN).subscribe(data => {
       return data;
+    });
+  }
+
+  getShop() {
+    this.http.get(environment.GET_SHOP_NAME).map(data => {
+      this.shop = <any>data;
+      console.log("Shop : " + this.shop);
     });
   }
 

@@ -10,5 +10,6 @@ export const environment = {
   VENDORS_URI_GET: "http://localhost:8080/api/vendors",
   VENDORS_URI_SAVE: "http://localhost:8080/api/vendor",
   COURIER_URI_SAVE: "http://localhost:8080/api/courier",
+  GET_SHOP_NAME: "http://localhost:8080/shopify/shop",
   production: false
 };

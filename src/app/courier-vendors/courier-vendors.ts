@@ -45,7 +45,7 @@ export class CourierVendorsComponent implements OnInit {
     //ToDo: This needs to be read from IFrame of shopify, which it pass back to the app
     // for testing "zinnga" is hardcoded
     this.courierService
-        .getCourier("zinnga") //remove before deploying
+        .getCourier(this.courierService.shop) //remove before deploying
         .subscribe(data => {
           this.couriers = data;
           //Initial load, ensure Delhivery is loaded
