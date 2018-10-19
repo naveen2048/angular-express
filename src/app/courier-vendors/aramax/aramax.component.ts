@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { courierDataModel } from '../../models/courier.model';
 import { ICourier } from '../../models/ICourier';
 
@@ -9,13 +9,15 @@ import { ICourier } from '../../models/ICourier';
 })
 export class AramaxComponent implements OnInit, ICourier {
 
-  model = new courierDataModel();
+  @Input() model:courierDataModel;
 
   @Output() dataChange = new EventEmitter();
   
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.model = new courierDataModel();
+  }
 
   save() {
     this.dataChange.emit(this.model);
