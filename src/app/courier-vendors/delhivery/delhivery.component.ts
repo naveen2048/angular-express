@@ -15,10 +15,12 @@ export class DelhiveryComponent implements OnInit, ICourier {
   @Output() dataChange = new EventEmitter();
   
   constructor() {
-    this.model = new courierDataModel();
+    
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.model = new courierDataModel();
+  }
 
   save() {
     this.model.courierType = CourierType.Delhivery;
