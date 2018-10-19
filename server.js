@@ -125,7 +125,7 @@ app.get("/shopify/callback", (req, res) => {
 });
 
 app.get("/shopify/shop",function(req,res,next){
-   res.json({ shop: shopName });
+   res.json({ store: shopName });
 });
 
 //Route: Vendors
