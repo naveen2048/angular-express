@@ -49,7 +49,7 @@ export class CourierVendorsComponent implements OnInit {
         .subscribe(data => {
           this.couriers = data;
           //Initial load, ensure Delhivery is loaded
-          this.loadComponent(1);
+          //this.loadComponent(1);
         });
   }
 
