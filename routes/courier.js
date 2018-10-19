@@ -7,9 +7,9 @@ var mongojs = require("./db").getMongojs();
 
 //Get vendors
 router.get("/courier/:shop", function(req,res,next){
-  let para = req.app.get('shop'); //req.params.shop;
-  console.log(para);
-  
+  let para = req.params.shop; //req.app.get('shop'); 
+  console.log( "this is the shop:" + req.app.get('shop'));
+
   db.couriers.find({ shop: para, isEnabled: true },function(err,couriers){
     if(err){
       res.status(400);
