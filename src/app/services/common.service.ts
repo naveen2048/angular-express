@@ -56,7 +56,6 @@ export class CommonService {
     this.http.get(environment.GET_SHOP_NAME)
     .subscribe(data => {
       this.shop = <IStore>data;
-      console.log("Shop : " + this.shop.store);
     });
   }
 

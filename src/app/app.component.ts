@@ -9,9 +9,11 @@ import { CommonService } from "./services/common.service";
 export class AppComponent implements OnInit {
   title = "app";
 
-  constructor(private service: CommonService) {}
+  constructor(private service: CommonService) {
+    this.service.getShop();
+  }
 
   ngOnInit() {
-    this.service.getShop();
+    
   }
 }
