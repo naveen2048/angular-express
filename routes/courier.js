@@ -8,7 +8,8 @@ var mongojs = require("./db").getMongojs();
 //Get vendors
 router.get("/courier/:shop", function(req,res,next){
   let para = req.app.get('shop'); //req.params.shop;
-
+  console.log(para);
+  
   db.couriers.find({ shop: para, isEnabled: true },function(err,couriers){
     if(err){
       res.status(400);
