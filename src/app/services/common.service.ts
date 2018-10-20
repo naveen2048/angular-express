@@ -24,7 +24,6 @@ export class CommonService {
         .subscribe(data => {
           this.shop.vendors = <vendorModel[]>data;
         });
-        //.map(data => <vendorModel[]>data);
   }
 
   getVendor(id:any): Observable<vendorModel> {
@@ -85,7 +84,6 @@ export class CommonService {
         .subscribe(data => {
           this.shop.couriers = <courierDataModel[]>data;
         });
-               //.map(data => <courierDataModel[]>data);
   }
 }
 

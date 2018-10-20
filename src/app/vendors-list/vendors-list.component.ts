@@ -15,9 +15,6 @@ export class VendorsListComponent implements OnInit {
   constructor(private vendorService: CommonService) {}
 
   ngOnInit() {
-    // this.vendorService.getVendors().subscribe(data => {
-    //   this.vendors = data;
-    // });
     this.vendors = this.vendorService.shop.vendors;
   }
 
@@ -45,16 +42,11 @@ export class VendorsListComponent implements OnInit {
   }
 
   editVendor(id) {
-    this.vendorService
-        .getVendor(id)
-        .subscribe(data => {
-          this.vendor = data;
-          this.cancel();
-        });
+    this.vendor = this.vendorService.shop.vendors.find(v => v._id == id);
+    this.cancel();
   }
 
   cancel() {
     this.showNewVendorForm = !this.showNewVendorForm;
-    //this.vendor = new vendorModel();
   }
 }

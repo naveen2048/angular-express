@@ -40,10 +40,10 @@
             <div class="col-sm-2">
               <select id="ddlCourier" name="ddlCourier" placeholder="select courier" [(ngModel)]="selectedCourier"
                 class="form-control" aria-invalid="false">
-                <option value="">Select Courier</option>
-                <option value="ecom">Ecom Express</option>
+                <option [value]="courier.courierType" *ngFor="let courier of couriers">{{courier.courierType}}</option>
+                <!-- <option value="ecom">Ecom Express</option>
                 <option value="delhivery">Delhivery</option>
-                <option value="aramax">Aramax</option>
+                <option value="aramax">Aramax</option> -->
               </select>
             </div>
             <div class="col-sm-2">

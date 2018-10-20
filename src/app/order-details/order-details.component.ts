@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { courierDataModel } from '../models/courier.model';
+import { CommonService } from '../services/common.service';
 
 @Component({
   selector: 'app-order-details',
@@ -11,12 +13,14 @@ export class OrderDetailsComponent implements OnInit {
   selectedCourier:string = "";
   selectedVendor:string = "";
   gateway:string;
+  couriers:courierDataModel[];
 
   showDetails:boolean = false;
-  constructor() { }
+  constructor(private orderService:CommonService) { }
 
   ngOnInit() { 
     this.gateway = this.order.gateway
+    this.couriers = this.orderService.shop.couriers;
   }
 
   toggle() {
