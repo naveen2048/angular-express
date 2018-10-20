@@ -46,11 +46,13 @@ export class CourierVendorsComponent implements OnInit {
     // for testing "zinnga" is hardcoded
     let shop = this.courierService.shop;
 
-    this.courierService
-        .getCourier(shop.store) //remove before deploying
-        .subscribe(data => {
-          this.couriers = data;
-        });
+    // this.courierService
+    //     .getCourier(shop.store) //remove before deploying
+    //     .subscribe(data => {
+    //       this.couriers = data;
+    //     });
+
+    this.couriers = this.courierService.shop.couriers;
   }
 
   loadComponent(index: number) {

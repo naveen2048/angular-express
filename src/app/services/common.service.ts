@@ -4,10 +4,8 @@ import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
 import { environment } from "../../environments/environment";
 import { vendorModel, courierDataModel } from '../models/index';
+import { IStore } from '../models/store.model';
 
-interface IStore {
-  store:string
-}
 
 @Injectable()
 export class CommonService {
@@ -56,6 +54,8 @@ export class CommonService {
     this.http.get(environment.GET_SHOP_NAME)
     .subscribe(data => {
       this.shop = <IStore>data;
+      //Get All Courier related to store
+      this.getCourier(this.shop.store);
     });
   }
 
@@ -70,13 +70,16 @@ export class CommonService {
   }
 
   //Get Courier by Shop:CourierType
-  getCourier(shop:string): Observable<courierDataModel[]> {
+  getCourier(shop:string) {
     var headers = new HttpHeaders();
     headers.set('Content-type', 'application/x-www-form-urlencoded');
 
-    return this.http
-               .get(environment.COURIER_URI_SAVE + "/" + shop, { headers: headers })
-               .map(data => <courierDataModel[]>data);
+    this.http
+        .get(environment.COURIER_URI_SAVE + "/" + shop, { headers: headers })
+        .subscribe(data => {
+          this.shop.couriers = <courierDataModel[]>data;
+        });
+               //.map(data => <courierDataModel[]>data);
   }
 }
 
