@@ -21,6 +21,8 @@ export class OrderDetailsComponent implements OnInit {
   ngOnInit() { 
     this.gateway = this.order.gateway
     this.couriers = this.orderService.shop.couriers;
+    //TODO: include select at index = 0
+    //push select at index =0
   }
 
   toggle() {
