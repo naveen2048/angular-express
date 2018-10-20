@@ -16,7 +16,7 @@ export class AramaxComponent implements OnInit, ICourier {
   constructor() {}
 
   ngOnInit() {
-    this.model = new courierDataModel();
+    //this.model = new courierDataModel();
   }
 
   save() {

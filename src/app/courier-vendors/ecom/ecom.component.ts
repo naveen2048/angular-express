@@ -1,12 +1,13 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { courierDataModel } from '../../models/courier.model';
+import { ICourier } from '../../models/ICourier';
 
 @Component({
   selector: "app-ecom",
   templateUrl: "./ecom.component.html",
   styleUrls: ["./ecom.component.css"]
 })
-export class EcomComponent implements OnInit {
+export class EcomComponent implements OnInit, ICourier {
 
   @Input() model : courierDataModel;
   
@@ -15,7 +16,7 @@ export class EcomComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.model = new courierDataModel();
+    //this.model = new courierDataModel();
   }
 
   save() {
