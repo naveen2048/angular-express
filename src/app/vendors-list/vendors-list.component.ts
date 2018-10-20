@@ -15,9 +15,10 @@ export class VendorsListComponent implements OnInit {
   constructor(private vendorService: CommonService) {}
 
   ngOnInit() {
-    this.vendorService.getVendors().subscribe(data => {
-      this.vendors = data;
-    });
+    // this.vendorService.getVendors().subscribe(data => {
+    //   this.vendors = data;
+    // });
+    this.vendors = this.vendorService.shop.vendors;
   }
 
   newVendor() {
@@ -26,7 +27,6 @@ export class VendorsListComponent implements OnInit {
 
   saveVendor() {
     //Update
-    debugger;
     if(this.vendor._id && this.vendor._id != ""){
       this.vendorService
           .updateVendor(this.vendor)
@@ -34,6 +34,7 @@ export class VendorsListComponent implements OnInit {
               console.log(data)
           });
     } else{ //New
+    this.vendor.SHOP = this.vendorService.shop.store;
     this.vendorService
       .saveVendor(this.vendor)
       .subscribe(vendor => {

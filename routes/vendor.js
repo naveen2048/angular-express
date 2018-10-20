@@ -5,8 +5,10 @@ var db = require("./db").getDb();
 var mongojs = require("./db").getMongojs();
 
 //Get vendors
-router.get("/vendors", function(req, res, next) {
-  db.vendors.find(function(err, vendors) {
+router.get("/vendors/:shop", function(req, res, next) {
+  let shop = req.params.shop;
+
+  db.vendors.find({ shop: shop },function(err, vendors) {
     if (err) {
       res.send(err);
     }

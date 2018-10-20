@@ -18,8 +18,13 @@ export class CommonService {
     return this.http.get(uri).map((data: any) => <any[]>data.orders);
   }
 
-  getVendors(): Observable<vendorModel[]> {
-    return this.http.get(environment.VENDORS_URI_GET).map(data => <vendorModel[]>data);
+  getVendors(shop:string) {
+    this.http
+        .get(environment.VENDORS_URI_GET + "/" + shop)
+        .subscribe(data => {
+          this.shop.vendors = <vendorModel[]>data;
+        });
+        //.map(data => <vendorModel[]>data);
   }
 
   getVendor(id:any): Observable<vendorModel> {
@@ -56,6 +61,7 @@ export class CommonService {
       this.shop = <IStore>data;
       //Get All Courier related to store
       this.getCourier(this.shop.store);
+      this.getVendors(this.shop.store);
     });
   }
 
