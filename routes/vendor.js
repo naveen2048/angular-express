@@ -8,7 +8,7 @@ var mongojs = require("./db").getMongojs();
 router.get("/vendors/:shop", function(req, res, next) {
   let shop = req.params.shop;
 
-  db.vendors.find({ shop: shop },function(err, vendors) {
+  db.vendors.find({ SHOP: shop },function(err, vendors) {
     if (err) {
       res.send(err);
     }
