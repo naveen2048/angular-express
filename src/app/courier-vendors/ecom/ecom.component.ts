@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { courierDataModel } from '../../models/courier.model';
 import { ICourier } from '../../models/ICourier';
+import { CourierType } from "../../models";
 
 @Component({
   selector: "app-ecom",
@@ -16,10 +17,10 @@ export class EcomComponent implements OnInit, ICourier {
   constructor() {}
 
   ngOnInit() {
-    //this.model = new courierDataModel();
   }
 
   save() {
+    this.model.courierType = CourierType.Ecom;
     this.dataChange.emit(this.model);
   }
 }
