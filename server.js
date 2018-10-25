@@ -7,19 +7,20 @@ const crypto = require("crypto");
 const morgan = require("morgan");
 const querystring = require("querystring");
 const request = require("request-promise");
-var config = require('./config'); // get our config file
+var config = require("./config"); // get our config file
 //DB module & initilization
 var dbModule = require("./routes/db");
 dbModule.initDb();
 
 var vendor = require("./routes/vendor");
 var courier = require("./routes/courier");
+var uninstallapp = require("./routes/uninstall");
 
 var db = dbModule.getDb();
 
 const app = express();
 
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 
 app.use(express.static(__dirname + "/dist"));
 
@@ -91,7 +92,7 @@ app.get("/shopify/callback", (req, res) => {
   const stateCookie = cookie.parse(req.headers.cookie).state;
 
   //Assign shop to class level variable, for later use
-  app.set('shop',shop);
+  app.set("shop", shop);
   shopName = shop;
 
   if (state !== stateCookie) {
@@ -124,24 +125,25 @@ app.get("/shopify/callback", (req, res) => {
   }
 });
 
-app.get("/shopify/shop",function(req,res,next){
-   res.json({ store: shopName });
+app.get("/shopify/shop", function(req, res, next) {
+  res.json({ store: shopName });
 });
 
 //Route: Vendors
 app.use("/api", vendor);
 //Route: Couriers
 app.use("/api", courier);
+//Route: Uninstall app
+app.use("/api", uninstallapp);
 
-
-function GetAccessToken(shop, code, req, res) {
+function GetAccessToken(shop, tempcode, req, res) {
   //Get permenant access_token for the store and save to DB for future use
   const accessTokenRequestUrl = "https://" + shop + "/admin/oauth/access_token";
 
   const accessTokenPayload = {
     client_id: apiKey,
     client_secret: apiSecret,
-    code
+    code: tempcode
   };
 
   superagent
@@ -157,6 +159,7 @@ function GetAccessToken(shop, code, req, res) {
         shop: shop,
         token: access_token,
         installdate: new Date(),
+        uninstalldate: "",
         isactive: true
       };
 

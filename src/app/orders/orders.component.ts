@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../services/common.service';
+import { orderModel } from '../models/order.model';
 
 @Component({
   selector: 'app-orders',
@@ -16,7 +17,11 @@ export class OrdersComponent implements OnInit {
   ngOnInit() {
     this.orderService
         .getOrders()
-        .subscribe(data => this.Orders = data);
+        .subscribe(data => this.Orders = <orderModel[]>data);
+  }
+
+  process(){
+    console.log( JSON.stringify(this.Orders.filter(a => a.billing_address.first_name == "Kaur")));
   }
 
 }

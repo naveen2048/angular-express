@@ -12,6 +12,7 @@ export class OrderDetailsComponent implements OnInit {
   @Input() order:any;
   selectedCourier:string = "";
   selectedVendor:string = "";
+  selectedForProcessing:boolean;
   gateway:string;
   couriers:courierDataModel[];
 
@@ -28,4 +29,5 @@ export class OrderDetailsComponent implements OnInit {
   toggle() {
     this.showDetails = !this.showDetails;
   }
+
 }
