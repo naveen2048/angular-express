@@ -5,8 +5,16 @@
         <!--Order Master -->
         <div class="Polaris-Stack__Item">
           <div class="row">
-            <input type="checkbox" name="chk-{{order.order_number}}" [(ngModel)]="order.test" />
+            <div class="col-sm-1">
+                <input type="checkbox" name="chk-{{order.order_number}}" [(ngModel)]="order.test" />
+            </div>
+            <div class="col-sm-2">
+              <span class="Polaris-Badge Polaris-Badge--status{{awbNumber === '---'? 'Attention':'Success'}}">
+                <span class="Polaris-VisuallyHidden">Attention</span>AWB:{{awbNumber}}</span>
+            </div>
+            <div class="col-sm-9"></div>
           </div>
+          <hr/>
           <div class="row">
             <div class="col-sm-1">
               <button type="button" class="Polaris-Button Polaris-Button--plain" (click)="toggle()">

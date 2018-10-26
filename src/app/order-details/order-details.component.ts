@@ -15,6 +15,7 @@ export class OrderDetailsComponent implements OnInit {
   selectedForProcessing:boolean;
   gateway:string;
   couriers:courierDataModel[];
+  awbNumber:string = "---";
 
   showDetails:boolean = false;
   constructor(private orderService:CommonService) { }
