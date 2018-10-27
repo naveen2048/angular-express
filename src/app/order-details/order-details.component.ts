@@ -42,4 +42,8 @@ export class OrderDetailsComponent implements OnInit {
       isSelected: this.selectedForProcessing
     });
   }
+
+  vendorSelected(vendor:any){
+    this.selectedVendor = vendor;
+  }
 }
