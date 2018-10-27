@@ -67,8 +67,8 @@ export class orderModel implements Deserializable {
   customer: any;
   internal_purpose: {
     isSelected: boolean;
-    vendor: any;
-    courier: any;
+    vendor: string;
+    courier: string;
   };
 
   deserialize(input: any)  {

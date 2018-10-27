@@ -1,12 +1,13 @@
 import { Injectable, Type } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
-import { of } from 'rxjs/observable/of';
+import { of } from "rxjs/observable/of";
 import "rxjs/add/operator/map";
 import { environment } from "../../environments/environment";
 import { vendorModel, courierDataModel } from "../models/index";
 import { IStore } from "../models/store.model";
 import { orderModel } from '../models/order.model';
+import { Deserializable } from '../models/deserializable.model';
 
 @Injectable()
 export class CommonService {
@@ -17,9 +18,14 @@ export class CommonService {
     let _orders: orderModel[];
 
     let uri = environment.ORDERS_URI;
-    return this.http.get(uri)
+    return this.http
+      .get<orderModel[]>(uri)
       .map((data: any) => <orderModel[]>data.orders);
-      //.map((res: any) => new orderModel().deserialize(res)));
+      // .map((data: any) => <orderModel[]>data.orders.map(order => {
+      //   new orderModel().deserialize(order);
+      // }));
+    //.map((data: any) => <orderModel[]>data.orders);
+    //.map((res: any) => new orderModel().deserialize(res)));
   }
 
   getVendors(shop: string) {

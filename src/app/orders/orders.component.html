@@ -17,7 +17,7 @@
   <hr *ngIf="Orders" />
 <div class="row" *ngFor="let order of Orders | orderFilter:searchText">
   <div class="col-sm-12">
-    <app-order-details [order]="order"></app-order-details>
+    <app-order-details [order]="order" (orderChange)="orderSelected($event)"></app-order-details>
   </div>
 </div>
 </div>

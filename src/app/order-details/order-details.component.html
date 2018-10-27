@@ -6,7 +6,7 @@
         <div class="Polaris-Stack__Item">
           <div class="row">
             <div class="col-sm-1">
-                <input type="checkbox" name="chk-{{order.order_number}}" [(ngModel)]="order.test" />
+                <input type="checkbox" name="chk-{{order.order_number}}" [(ngModel)]="selectedForProcessing" (change)="selectedOrder()" />
             </div>
             <div class="col-sm-2">
               <span class="Polaris-Badge Polaris-Badge--status{{awbNumber === '---'? 'Attention':'Success'}}">
