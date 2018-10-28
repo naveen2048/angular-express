@@ -1,0 +1,33 @@
+export interface delhiveryModel {
+  Waybill: string;
+  "Order No": number;
+  "Consignee Name": string;
+  City: string;
+  State: string;
+  Country: string;
+  Address: string;
+  Pincode: string;
+  Mobile: string;
+  Weight: number;
+  "Payment Mode": string;
+  "Payment Amount": number;
+  "Cod Amount": number;
+  "Product to be shipped": string;
+  "Return Address": string;
+  "Return Pin": number;
+  "Seller Name": "Cignatek";
+  "Seller Address": string;
+  "Seller CST No": "36147252773";
+  "Seller TIN": "36147252773";
+  "Invoice No": number;
+  "Seller Inv Date": Date;
+  Length: "10";
+  Breadth: "10";
+  Height: "10";
+  "Product Quantity": number;
+  "Commodity Value": "";
+  "Tax Value": "";
+  "Category of Goods": "";
+  "Sales Tax From ack no": "";
+  "Consignee TIN": "";
+}

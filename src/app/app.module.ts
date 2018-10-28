@@ -17,12 +17,14 @@ import { VendorsListComponent } from "./vendors-list/vendors-list.component";
 import { EcomComponent } from "./courier-vendors/ecom/ecom.component";
 import { DelhiveryComponent } from "./courier-vendors/delhivery/delhivery.component";
 import { CourierVendorsComponent } from "./courier-vendors/courier-vendors";
+import { CourierDataProcessing } from './utilities/courier.data.processing';
 
 //3rd Party library
 import { TabModule } from "angular-tabs-component";
 import { CourierDirective } from "./shared/component-loader-directive";
 import { AramaxComponent } from "./courier-vendors/aramax/aramax.component";
 import { ImageComponent } from "./shared/image-component";
+
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -58,7 +60,7 @@ const routes: Routes = [
     TabModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [CommonService],
+  providers: [CommonService, CourierDataProcessing],
   bootstrap: [AppComponent],
   entryComponents: [DelhiveryComponent, EcomComponent, AramaxComponent]
 })
