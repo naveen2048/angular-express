@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { CommonService } from "../services/common.service";
 import { orderModel } from "../models/order.model";
+import { CourierDataProcessing } from "../utilities/courier.data.processing";
+import { CourierType } from "../models";
 
 @Component({
   selector: "app-orders",
@@ -12,7 +14,10 @@ export class OrdersComponent implements OnInit {
   searchText: string;
   Orders: any[];
   selectedOrders: any[] = [];
-  constructor(private orderService: CommonService) {}
+  constructor(
+    private orderService: CommonService,
+    private utilityService: CourierDataProcessing
+  ) {}
 
   ngOnInit() {
     this.orderService.getOrders().subscribe(data => {
@@ -21,11 +26,12 @@ export class OrdersComponent implements OnInit {
   }
 
   process() {
-    console.log(
-      JSON.stringify(
-        this.Orders.filter(a => a.billing_address.first_name == "Kaur")
-      )
+    let data = this.selectedOrders.filter(
+      e => e.courier == CourierType.Delhivery && e.isSelected == true
     );
+    this.utilityService
+        .processForDelhivery(data)
+        .subscribe(d => console.log(d));
   }
 
   orderSelected(order: any) {
@@ -33,7 +39,7 @@ export class OrdersComponent implements OnInit {
       let _order = this.selectedOrders.findIndex(
         o => o.order_number == order.order_number
       );
-      this.selectedOrders.splice(_order,1);
+      this.selectedOrders.splice(_order, 1);
       console.log(this.selectedOrders);
     } else {
       this.selectedOrders.push(order);

@@ -20,9 +20,6 @@ export class VendorsDropdownComponent implements OnInit {
   constructor(private vendorService: CommonService) {}
 
   ngOnInit() {
-    // this.vendorService.getVendors().subscribe(data => {
-    //   this.vendors = data;
-    // });
     this.vendors = this.vendorService.shop.vendors;
   }
 

@@ -95,7 +95,7 @@ export class CommonService {
     headers.set("Content-type", "application/x-www-form-urlencoded");
 
     this.http
-      .get(environment.COURIER_URI_SAVE + "/" + shop, { headers: headers })
+      .get(environment.COURIER_URI_GET + "/" + shop, { headers: headers })
       .subscribe(data => {
         this.shop.couriers = <courierDataModel[]>data;
       });

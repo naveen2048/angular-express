@@ -1,0 +1,17 @@
+[
+  {
+    "courierType": "Ecom"
+  },
+  {
+    "courierType": "Delhivery"
+  },
+  {
+    "courierType": "Aramax"
+  },
+  {
+    "courierType": "FedEx"
+  },
+  {
+    "courierType": "BlueDart"
+  }
+]

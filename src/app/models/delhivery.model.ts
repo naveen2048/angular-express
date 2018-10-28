@@ -17,13 +17,13 @@ export interface delhiveryModel {
   "Return Pin": number;
   "Seller Name": "Cignatek";
   "Seller Address": string;
-  "Seller CST No": "36147252773";
-  "Seller TIN": "36147252773";
+  "Seller CST No": "";
+  "Seller TIN": "";
   "Invoice No": number;
   "Seller Inv Date": Date;
-  Length: "10";
-  Breadth: "10";
-  Height: "10";
+  Length: any;
+  Breadth: any;
+  Height: any;
   "Product Quantity": number;
   "Commodity Value": "";
   "Tax Value": "";
