@@ -6,7 +6,7 @@ import { CommonService } from "../services/common.service";
   template: `
     <select id="ddlCourier" name="ddlCourier" [(ngModel)]="selectedVendor" (change)="vendor()" placeholder="select courier"
         class="form-control" aria-invalid="false">
-    <option *ngFor="let vendor of vendors" value="{{vendor.ID}}">{{vendor.PICKUP_NAME}}</option>
+    <option *ngFor="let vendor of vendors" value="{{vendor._id}}">{{vendor.PICKUP_NAME}}</option>
     </select>
   `,
   styleUrls: []
