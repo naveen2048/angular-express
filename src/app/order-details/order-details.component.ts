@@ -13,7 +13,7 @@ export class OrderDetailsComponent implements OnInit {
   @Output()
   orderChange = new EventEmitter<any>();
   selectedCourier: string = "";
-  selectedVendor: string = "";
+  selectedVendor: any;
   selectedForProcessing: boolean;
   gateway: string;
   couriers: courierDataModel[];
@@ -37,7 +37,7 @@ export class OrderDetailsComponent implements OnInit {
     this.orderChange.emit({
       order_number: this.order.order_number,
       order: this.order,
-      courier: this.selectedCourier,
+      courier: this.couriers.filter(c => c.courierType == this.selectedCourier)[0],
       vendor: this.selectedVendor,
       isSelected: this.selectedForProcessing
     });

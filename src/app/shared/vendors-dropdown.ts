@@ -13,8 +13,8 @@ import { CommonService } from "../services/common.service";
 })
 export class VendorsDropdownComponent implements OnInit {
   
-  @Input() selectedVendor:string;
-  @Output() selectedVendorChange = new EventEmitter<string>();
+  @Input() selectedVendor:any;
+  @Output() selectedVendorChange = new EventEmitter<any>();
 
   vendors: any[] = [];
   constructor(private vendorService: CommonService) {}
@@ -24,6 +24,6 @@ export class VendorsDropdownComponent implements OnInit {
   }
 
   vendor() {
-    this.selectedVendorChange.emit(this.selectedVendor);
+    this.selectedVendorChange.emit(this.vendors.filter(v => v._id == this.selectedVendor)[0]);
   }
 }
