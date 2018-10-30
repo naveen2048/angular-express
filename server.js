@@ -205,6 +205,15 @@ function validateRequest(req, hmac) {
 
 //Path Location Strategy
 app.get("/*", function(req, res) {
+  const { shop, hmac, code, state } = req.query;
+
+  //ensure this request is from within Shopify itself 
+  //with valid parameters for validation
+  if (shop && hmac && code) {
+    if (!validateRequest(req, hmac)) {
+      return "Request invalid or not from shopify";
+    }
+  }
   res.sendFile(path.join(__dirname + "/dist/index.html"));
 });
 
