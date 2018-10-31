@@ -27,7 +27,7 @@ export class OrdersComponent implements OnInit {
 
   process() {
     let data = this.selectedOrders.filter(
-      e => e.courier == CourierType.Delhivery && e.isSelected == true
+      e => e.courier.courierType == CourierType.Delhivery && e.isSelected == true
     );
     this.utilityService
         .processForDelhivery(data)
