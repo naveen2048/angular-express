@@ -11,7 +11,7 @@ import { Deserializable } from '../models/deserializable.model';
 
 @Injectable()
 export class CommonService {
-  shop: IStore;
+  public shop: IStore;
   constructor(private http: HttpClient) {}
 
   getOrders(): Observable<orderModel[]> {
