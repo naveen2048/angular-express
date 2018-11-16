@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
     this.loadedIniFrame();
 
     this.service.getShop();
-    this.isShop = this.service.shop.store == "" ? false : true;
+    //this.isShop = this.service.shop.store == "" ? false : true;
   }
 
   ngOnInit() {
