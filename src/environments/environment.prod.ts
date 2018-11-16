@@ -7,5 +7,6 @@ export const environment = {
   COURIER_URI_GET: "https://mnk-angular-express.herokuapp.com/api/courier",
   COURIER_URI_SAVE: "https://mnk-angular-express.herokuapp.com/api/courier",
   GET_SHOP_NAME: "https://mnk-angular-express.herokuapp.com/shopify/shop",
+  SHOPIFY_URL:"https://www.shopify.com/login",
   production: true
 };

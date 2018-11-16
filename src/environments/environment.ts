@@ -13,5 +13,6 @@ export const environment = {
   COURIER_URI_GET:"../../assets/couriers.json",
   COURIER_URI_SAVE: "http://localhost:8080/api/courier",
   GET_SHOP_NAME: "http://localhost:8080/shopify/shop",
+  SHOPIFY_URL:"https://www.shopify.com/login",
   production: false
 };

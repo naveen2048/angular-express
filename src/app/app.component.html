@@ -1,10 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
-
-<div class="container">
-  <div class="row">
+<app-spinner [showSpinner]="!isShop"></app-spinner>
+<div class="container" *ngIf="isShop">
+  <div class="row" *ngIf="isShop">
     <app-header-navigation></app-header-navigation>
   </div>
-  <section class="subDiv">
+  <section class="subDiv" *ngIf="isShop">
     <!-- Spinner -->
     <router-outlet></router-outlet>
   </section>
