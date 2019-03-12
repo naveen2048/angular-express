@@ -8,5 +8,11 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
+if (top !== self) {
+  platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.log(err));
+} else {
+  document.write('App opens as part of Shopify only');
+}
+
+
